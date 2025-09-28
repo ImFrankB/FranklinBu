@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import PageTransition from '../components/PageTransition';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+import PageTransition from "../components/PageTransition";
 
 const ProjectsPage = () => {
-
   return (
     <PageTransition>
       <div className="min-h-screen flex items-center justify-center px-8 md:px-16">
@@ -14,15 +13,14 @@ const ProjectsPage = () => {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          {/* Simple Construction Icon */}
           <motion.div
-            animate={{ 
+            animate={{
               rotate: [0, 5, -5, 0],
             }}
-            transition={{ 
+            transition={{
               duration: 2,
               repeat: Infinity,
-              repeatType: "reverse"
+              repeatType: "reverse",
             }}
             className="text-6xl mb-8"
           >
@@ -34,7 +32,8 @@ const ProjectsPage = () => {
           </h1>
 
           <p className="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
-            Something amazing is in the works. Check back soon to see my latest projects.
+            Something amazing is in the works. Check back soon to see my latest
+            projects.
           </p>
 
           <Link to="/">
@@ -48,7 +47,6 @@ const ProjectsPage = () => {
           </Link>
         </motion.div>
       </div>
-
     </PageTransition>
   );
 };

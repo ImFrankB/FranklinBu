@@ -56,7 +56,6 @@ const AboutPage = () => {
               className="relative"
             >
               <div className="relative overflow-hidden">
-                {/* Replace src with your actual image */}
                 <img
                   src="./public/Images/profileImg.jpg"
                   alt="Profile"
@@ -159,7 +158,6 @@ const AboutPage = () => {
             ))}
           </motion.div>
 
-          {/* Experience & Philosophy Grid */}
           <div className="grid md:grid-cols-2 gap-16 mb-20">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -240,8 +238,6 @@ const AboutPage = () => {
               ))}
             </div>
           </motion.div>
-
-          {/* Services Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -258,7 +254,6 @@ const AboutPage = () => {
             </div>
           </motion.div>
 
-          {/* Download CV Button */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

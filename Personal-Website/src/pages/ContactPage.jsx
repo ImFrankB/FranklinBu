@@ -10,29 +10,25 @@ const ContactPage = () => {
     message: "",
   });
 
-  // State to handle submission status
   const [status, setStatus] = useState("");
 
-  // 👇 Replace your old handleSubmit function with this one
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("Sending...");
 
     try {
-      // Replace with your actual SheetDB API endpoint
       const response = await axios.post(
         "https://sheetdb.io/api/v1/0pnozhsete2s9",
         {
           data: {
-            ...formData,  
-            timestamp: new Date().toLocaleString(), // Optional: Add a timestamp
+            ...formData,
+            timestamp: new Date().toLocaleString(),
           },
         }
       );
 
       console.log("Success:", response);
       setStatus("Message sent successfully!");
-      // Clear the form after successful submission
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error("Error!", error);
@@ -82,7 +78,7 @@ const ContactPage = () => {
                   </label>
                   <input
                     type="text"
-                    name="name" // Good practice to add name attribute
+                    name="name"
                     value={formData.name}
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
@@ -131,21 +127,17 @@ const ContactPage = () => {
                   >
                     SEND MESSAGE
                   </motion.button>
-                  {/* 👇 Display submission status message */}
                   {status && <p className="text-sm text-gray-600">{status}</p>}
                 </div>
               </form>
             </motion.div>
 
-            {/* Contact Info (rest of your component is the same) */}
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-12"
-            >
-              {/* ... your contact info JSX ... */}
-            </motion.div>
+            ></motion.div>
           </div>
         </div>
       </div>

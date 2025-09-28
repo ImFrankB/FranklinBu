@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { TypeAnimation } from 'react-type-animation';
-import PageTransition from '../components/PageTransition';
+import React from "react";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { TypeAnimation } from "react-type-animation";
+import PageTransition from "../components/PageTransition";
 
 const HomePage = () => {
   const containerVariants = {
@@ -32,7 +32,7 @@ const HomePage = () => {
     <PageTransition>
       <div className="min-h-screen flex items-center justify-center px-8 md:px-16">
         <div className="noise" />
-        
+
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -40,7 +40,6 @@ const HomePage = () => {
           className="max-w-7xl w-full"
         >
           <div className="grid md:grid-cols-2 gap-16 items-center">
-            {/* Left Content */}
             <div>
               <motion.div variants={itemVariants} className="mb-8">
                 <span className="text-sm text-gray-500 tracking-[0.3em] uppercase">
@@ -61,11 +60,11 @@ const HomePage = () => {
               >
                 <TypeAnimation
                   sequence={[
-                    'Student',
+                    "Student",
                     2000,
-                    'Passionate Coder',
+                    "Passionate Coder",
                     2000,
-                    'Problem Solver',
+                    "Problem Solver",
                     2000,
                   ]}
                   wrapper="span"
@@ -78,7 +77,9 @@ const HomePage = () => {
                 variants={itemVariants}
                 className="text-gray-600 leading-relaxed mb-12 max-w-lg"
               >
-Good developers do more than just write code; they simplify complex code, boost its efficiency, and ensure its long-term maintainability.
+                Good developers do more than just write code; they simplify
+                complex code, boost its efficiency, and ensure its long-term
+                maintainability.
               </motion.p>
 
               <motion.div variants={itemVariants} className="flex gap-6">
@@ -105,7 +106,6 @@ Good developers do more than just write code; they simplify complex code, boost 
               </motion.div>
             </div>
 
-            {/* Right Content - Animated Shape */}
             <motion.div
               variants={itemVariants}
               className="relative hidden md:block"
@@ -141,7 +141,6 @@ Good developers do more than just write code; they simplify complex code, boost 
             </motion.div>
           </div>
 
-          {/* Scroll Indicator */}
           <motion.div
             variants={itemVariants}
             className="absolute bottom-8 left-8 md:left-16"
@@ -151,7 +150,9 @@ Good developers do more than just write code; they simplify complex code, boost 
               transition={{ duration: 2, repeat: Infinity }}
               className="flex flex-col items-center"
             >
-              <span className="text-xs text-gray-500 tracking-wider mb-2 rotate-90">SCROLL</span>
+              <span className="text-xs text-gray-500 tracking-wider mb-2 rotate-90">
+                SCROLL
+              </span>
               <div className="w-[1px] h-20 bg-gray-300" />
             </motion.div>
           </motion.div>
