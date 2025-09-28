@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import PageTransition from "../components/PageTransition";
+import profileImage from "../images/profileImg.jpg";
 
 const AboutPage = () => {
   const [ref, inView] = useInView({
@@ -57,7 +58,7 @@ const AboutPage = () => {
             >
               <div className="relative overflow-hidden">
                 <img
-                  src="./images/profileImg.jpg"
+                  src={profileImage}
                   alt="Profile"
                   className="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
