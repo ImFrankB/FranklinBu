@@ -57,7 +57,7 @@ const AboutPage = () => {
             >
               <div className="relative overflow-hidden">
                 <img
-                  src="./public/Images/profileImg.jpg"
+                  src="./images/profileImg.jpg"
                   alt="Profile"
                   className="w-full h-[600px] object-cover grayscale hover:grayscale-0 transition-all duration-700"
                 />
