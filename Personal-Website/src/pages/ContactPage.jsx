@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import axios from "axios"; // 👈 Import axios
+import axios from "axios";
 import PageTransition from "../components/PageTransition";
 
 const ContactPage = () => {
@@ -17,15 +17,12 @@ const ContactPage = () => {
     setStatus("Sending...");
 
     try {
-      const response = await axios.post(
-        "https://sheetdb.io/api/v1/0pnozhsete2s9",
-        {
-          data: {
-            ...formData,
-            timestamp: new Date().toLocaleString(),
-          },
-        }
-      );
+      const response = await axios.post(import.meta.env.VITE_SHEETDB_API_URL, {
+        data: {
+          ...formData,
+          timestamp: new Date().toLocaleString(),
+        },
+      });
 
       console.log("Success:", response);
       setStatus("Message sent successfully!");
