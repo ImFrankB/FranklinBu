@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,22 +11,24 @@ const Navbar = () => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const menuItems = [
-    { path: '/', label: 'Home', number: '01' },
-    { path: '/about', label: 'About', number: '02' },
-    { path: '/Projects', label: 'Projects', number: '03' },
-    { path: '/contact', label: 'Contact', number: '04' },
+    { path: "/", label: "Home", number: "01" },
+    { path: "/about", label: "About", number: "02" },
+    { path: "/Projects", label: "Projects", number: "03" },
+    { path: "/contact", label: "Contact", number: "04" },
   ];
 
   return (
     <>
-      <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled ? 'bg-white/80 backdrop-blur-md' : 'bg-transparent'
-      }`}>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+          scrolled ? "bg-white/80 backdrop-blur-md" : "bg-transparent"
+        }`}
+      >
         <div className="px-8 md:px-16 py-6">
           <div className="flex justify-between items-center">
             <Link to="/">
@@ -34,7 +36,7 @@ const Navbar = () => {
                 whileHover={{ scale: 1.05 }}
                 className="text-2xl font-light tracking-wider"
               >
-                PORTFOLIO
+                FRANKLIN-BU
               </motion.div>
             </Link>
 
@@ -42,20 +44,25 @@ const Navbar = () => {
             <div className="hidden md:flex items-center space-x-12">
               {menuItems.map((item) => (
                 <Link key={item.path} to={item.path}>
-                  <motion.div
-                    whileHover={{ y: -2 }}
-                    className="relative group"
-                  >
-                    <span className="text-xs text-gray-400 mr-2">{item.number}</span>
-                    <span className={`text-sm tracking-wider ${
-                      location.pathname === item.path ? 'text-black' : 'text-gray-600'
-                    } hover:text-black transition-colors`}>
+                  <motion.div whileHover={{ y: -2 }} className="relative group">
+                    <span className="text-xs text-gray-400 mr-2">
+                      {item.number}
+                    </span>
+                    <span
+                      className={`text-sm tracking-wider ${
+                        location.pathname === item.path
+                          ? "text-black"
+                          : "text-gray-600"
+                      } hover:text-black transition-colors`}
+                    >
                       {item.label}
                     </span>
                     <motion.div
                       className="absolute -bottom-1 left-0 h-[1px] bg-black"
                       initial={{ width: 0 }}
-                      animate={{ width: location.pathname === item.path ? '100%' : 0 }}
+                      animate={{
+                        width: location.pathname === item.path ? "100%" : 0,
+                      }}
                       transition={{ duration: 0.3 }}
                     />
                   </motion.div>
@@ -90,10 +97,14 @@ const Navbar = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ x: '100%' }}
+            initial={{ x: "100%" }}
             animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+            exit={{ x: "100%" }}
+            transition={{
+              type: "tween",
+              duration: 0.5,
+              ease: [0.76, 0, 0.24, 1],
+            }}
             className="fixed inset-0 bg-white z-30 md:hidden"
           >
             <div className="flex flex-col justify-center items-center h-full">
@@ -109,7 +120,9 @@ const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     className="block py-4"
                   >
-                    <span className="text-gray-400 text-sm mr-4">{item.number}</span>
+                    <span className="text-gray-400 text-sm mr-4">
+                      {item.number}
+                    </span>
                     <span className="text-3xl font-light">{item.label}</span>
                   </Link>
                 </motion.div>
