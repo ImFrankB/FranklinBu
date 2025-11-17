@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
+import campusTraceLogo from "../images/CampusTrace.png";
 
 const ProjectsPage = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
@@ -10,10 +11,13 @@ const ProjectsPage = () => {
     {
       id: 1,
       title: "CampusTrace",
-      description: "An AI powered lost and found application for universities.",
-      tags: ["Web Development", "Full Stack", "Management System"],
+      logo: campusTraceLogo,
+      description:
+        "CampusTrace is an intelligent web application designed to streamline the lost and found process specifically for university campuses. The platform uses AI technology to help students quickly report, search, and recover lost items.",
+      tags: ["AI/ML", "React", "Python", "Supabase"],
       link: "https://campustrace.site",
       year: "2025",
+      status: "Live",
     },
   ];
 
@@ -76,7 +80,7 @@ const ProjectsPage = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="space-y-8"
+            className="space-y-16"
           >
             {projects.map((project, index) => (
               <motion.div
@@ -92,55 +96,109 @@ const ProjectsPage = () => {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <div className="border-t border-gray-200 py-8 md:py-12">
-                    <div className="grid md:grid-cols-12 gap-8 items-start">
-                      {/* Project Number */}
-                      <div className="md:col-span-1">
-                        <span className="text-sm text-gray-400 font-light">
-                          0{index + 1}
-                        </span>
-                      </div>
+                  <div className="relative border border-gray-200 p-8 md:p-12 group-hover:border-black group-hover:shadow-2xl transition-all duration-500">
+                    {/* Status Badge */}
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.5 }}
+                      className="absolute top-8 right-8 px-4 py-1 bg-black text-white text-xs tracking-wider"
+                    >
+                      {project.status}
+                    </motion.div>
 
-                      {/* Project Info */}
-                      <div className="md:col-span-7">
-                        <motion.h2 className="text-3xl md:text-5xl font-light mb-4 group-hover:translate-x-2 transition-transform duration-500">
-                          {project.title}
-                        </motion.h2>
-                        <p className="text-gray-600 leading-relaxed mb-6 max-w-2xl">
-                          {project.description}
-                        </p>
-                        <div className="flex flex-wrap gap-3">
-                          {project.tags.map((tag, i) => (
-                            <span
-                              key={i}
-                              className="text-xs tracking-wider px-4 py-2 border border-gray-300 text-gray-700 group-hover:border-black group-hover:bg-black group-hover:text-white transition-all duration-300"
-                            >
-                              {tag}
-                            </span>
-                          ))}
+                    {/* Project Number */}
+                    <div className="mb-8">
+                      <span className="text-6xl md:text-8xl font-light text-gray-200 group-hover:text-gray-300 transition-colors duration-500">
+                        0{index + 1}
+                      </span>
+                    </div>
+
+                    <div className="grid md:grid-cols-12 gap-8 items-start">
+                      {/* Logo & Title Section */}
+                      <div className="md:col-span-12">
+                        <div className="flex items-center gap-6 mb-8">
+                          {/* Logo */}
+                          <motion.div
+                            whileHover={{ scale: 1.05, rotate: 5 }}
+                            transition={{ duration: 0.3 }}
+                            className="flex-shrink-0"
+                          >
+                            <div className="w-20 h-20 md:w-24 md:h-24 bg-white border-2 border-gray-200 group-hover:border-black transition-all duration-500 flex items-center justify-center overflow-hidden">
+                              <img
+                                src={project.logo}
+                                alt={`${project.title} logo`}
+                                className="w-full h-full object-contain p-2"
+                                onError={(e) => {
+                                  e.target.style.display = "none";
+                                  e.target.parentElement.innerHTML = `<span class="text-2xl font-bold">${project.title[0]}</span>`;
+                                }}
+                              />
+                            </div>
+                          </motion.div>
+
+                          {/* Title */}
+                          <div className="flex-1">
+                            <motion.h2 className="text-4xl md:text-6xl font-light group-hover:translate-x-2 transition-transform duration-500">
+                              {project.title}
+                            </motion.h2>
+                            <div className="flex items-center gap-4 mt-2">
+                              <span className="text-sm text-gray-500 tracking-wider">
+                                {project.year}
+                              </span>
+                              <span className="w-1 h-1 bg-gray-400 rounded-full" />
+                              <motion.div className="flex items-center gap-2 text-sm tracking-wider group-hover:gap-3 transition-all duration-300">
+                                <span className="text-gray-700">
+                                  VIEW PROJECT
+                                </span>
+                                <motion.span
+                                  animate={{
+                                    x:
+                                      hoveredProject === project.id
+                                        ? [0, 5, 0]
+                                        : 0,
+                                  }}
+                                  transition={{
+                                    duration: 0.8,
+                                    repeat:
+                                      hoveredProject === project.id
+                                        ? Infinity
+                                        : 0,
+                                  }}
+                                  className="text-black"
+                                >
+                                  →
+                                </motion.span>
+                              </motion.div>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Year & Link */}
-                      <div className="md:col-span-4 flex md:flex-col justify-between md:items-end h-full">
-                        <span className="text-sm text-gray-500 tracking-wider">
-                          {project.year}
-                        </span>
-                        <motion.div className="flex items-center gap-2 text-sm tracking-wider group-hover:gap-4 transition-all duration-300">
-                          <span>VIEW PROJECT</span>
-                          <motion.span
-                            animate={{
-                              x: hoveredProject === project.id ? [0, 5, 0] : 0,
-                            }}
-                            transition={{
-                              duration: 0.8,
-                              repeat:
-                                hoveredProject === project.id ? Infinity : 0,
-                            }}
-                          >
-                            →
-                          </motion.span>
-                        </motion.div>
+                      {/* Description Section */}
+                      <div className="md:col-span-12">
+                        <div className="bg-gray-50 group-hover:bg-gray-100 transition-colors duration-500 p-6 md:p-8 border-l-4 border-black">
+                          <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+                            {project.description}
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Tags Section */}
+                      <div className="md:col-span-12">
+                        <div className="flex flex-wrap gap-3">
+                          {project.tags.map((tag, i) => (
+                            <motion.span
+                              key={i}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.6 + i * 0.1 }}
+                              className="text-xs tracking-wider px-5 py-2.5 bg-white border border-gray-300 text-gray-700 group-hover:border-black group-hover:bg-black group-hover:text-white transition-all duration-300"
+                            >
+                              {tag}
+                            </motion.span>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
