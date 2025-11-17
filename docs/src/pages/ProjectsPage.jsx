@@ -13,8 +13,8 @@ const ProjectsPage = () => {
       title: "CampusTrace",
       logo: campusTraceLogo,
       description:
-        "CampusTrace is an intelligent web application designed to streamline the lost and found process specifically for university campuses. The platform uses AI technology to help students quickly report, search, and recover lost items.",
-      tags: ["AI/ML", "React", "Python", "Supabase"],
+        "CampusTrace is a cross-platform solution featuring both a web application and mobile app, designed to revolutionize the lost and found process for university campuses. Leveraging advanced AI technology, the platform enables students to seamlessly report, search, and recover lost items across any device. With intelligent image recognition, real-time notifications, and an intuitive interface optimized for both desktop and mobile experiences, CampusTrace makes finding lost belongings faster and more efficient than ever.",
+      tags: ["AI/ML", "React", "React Native", "Python", "Supabase"],
       link: "https://campustrace.site",
       year: "2025",
       status: "Live",
