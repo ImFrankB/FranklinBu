@@ -10,6 +10,7 @@ import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import Loader from "./components/Loader";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import AnimatedBackground from "./components/AnimatedBackground";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage";
@@ -40,14 +41,17 @@ function AppContent() {
 
   return (
     <div
-      className={`${theme.bg} ${theme.text} min-h-screen transition-colors duration-500`}
+      className={`${theme.bg} ${theme.text} min-h-screen transition-colors duration-500 relative overflow-hidden`}
     >
+      <AnimatedBackground />
       <AnimatePresence>{loading && <Loader />}</AnimatePresence>
 
       {!loading && (
         <>
           <Navbar />
-          <AnimatedRoutes />
+          <div className="relative z-10">
+            <AnimatedRoutes />
+          </div>
           <ThemeSwitcher />
         </>
       )}
