@@ -9,6 +9,7 @@ const ThemeSwitcher = () => {
   const themeIcons = {
     light: "☀️",
     dark: "🌙",
+    noir: "🎬",
     breastCancer: "🎀",
     autism: "🧩",
     environmental: "🌱",
@@ -16,8 +17,9 @@ const ThemeSwitcher = () => {
   };
 
   const themeColors = {
-    light: "from-gray-900 to-black",
+    light: "from-slate-900 via-slate-800 to-zinc-900",
     dark: "from-purple-600 to-pink-600",
+    noir: "from-neutral-100 via-stone-100 to-zinc-100",
     breastCancer: "from-pink-500 to-rose-500",
     autism: "from-blue-500 via-indigo-500 to-purple-500",
     environmental: "from-green-600 via-emerald-600 to-teal-600",

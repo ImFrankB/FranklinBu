@@ -5,31 +5,91 @@ const AnimatedBackground = () => {
   const { currentTheme } = useTheme();
 
   const patterns = {
+    noir: (
+      <>
+        <motion.div
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, 180, 360],
+            x: [0, 40, 0],
+            y: [0, -30, 0],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute top-0 right-0 w-[650px] h-[650px] bg-gradient-to-br from-neutral-700/30 via-stone-600/20 to-transparent rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1.2, 1, 1.2],
+            rotate: [360, 180, 0],
+            x: [0, -40, 0],
+            y: [0, 30, 0],
+          }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute bottom-0 left-0 w-[650px] h-[650px] bg-gradient-to-br from-zinc-700/20 via-neutral-600/30 to-transparent rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute top-1/3 right-1/3 w-[500px] h-[500px] bg-gradient-to-br from-stone-600/20 via-neutral-700/25 to-transparent rounded-full blur-3xl"
+        />
+      </>
+    ),
     light: (
       <>
         <motion.div
           animate={{
             scale: [1, 1.2, 1],
             rotate: [0, 180, 360],
+            x: [0, 30, 0],
+            y: [0, -20, 0],
           }}
           transition={{
-            duration: 20,
+            duration: 25,
             repeat: Infinity,
-            ease: "linear",
+            ease: "easeInOut",
           }}
-          className="absolute top-20 right-20 w-96 h-96 bg-gradient-to-br from-gray-200/30 to-transparent rounded-full blur-3xl"
+          className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-br from-slate-300/40 via-zinc-200/30 to-transparent rounded-full blur-3xl"
         />
         <motion.div
           animate={{
             scale: [1.2, 1, 1.2],
             rotate: [360, 180, 0],
+            x: [0, -30, 0],
+            y: [0, 20, 0],
           }}
           transition={{
-            duration: 25,
+            duration: 30,
             repeat: Infinity,
-            ease: "linear",
+            ease: "easeInOut",
           }}
-          className="absolute bottom-20 left-20 w-96 h-96 bg-gradient-to-br from-gray-300/20 to-transparent rounded-full blur-3xl"
+          className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-zinc-300/30 via-slate-200/40 to-transparent rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{
+            scale: [1, 1.15, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-br from-slate-200/20 via-zinc-300/30 to-slate-200/20 rounded-full blur-3xl"
         />
       </>
     ),

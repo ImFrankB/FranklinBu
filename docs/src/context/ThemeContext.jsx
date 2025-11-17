@@ -5,24 +5,26 @@ const ThemeContext = createContext();
 export const themes = {
   light: {
     name: "Light",
-    bg: "bg-white",
-    text: "text-gray-900",
-    textSecondary: "text-gray-600",
-    textTertiary: "text-gray-500",
-    border: "border-gray-200",
-    borderHover: "group-hover:border-black",
+    bg: "bg-gradient-to-br from-slate-50 via-white to-zinc-50",
+    text: "text-slate-900",
+    textSecondary: "text-slate-600",
+    textTertiary: "text-slate-500",
+    border: "border-slate-200",
+    borderHover: "group-hover:border-slate-900",
     button:
-      "bg-gradient-to-r from-gray-900 to-black text-white hover:from-black hover:to-gray-800",
-    buttonOutline: "border-black hover:bg-black hover:text-white",
-    card: "bg-white",
-    cardHover: "group-hover:shadow-2xl group-hover:shadow-gray-300/50",
-    accent: "bg-black",
-    accentText: "text-black",
-    tag: "bg-white border-gray-300 text-gray-700 group-hover:border-black group-hover:bg-gradient-to-r group-hover:from-gray-900 group-hover:to-black group-hover:text-white",
+      "bg-gradient-to-r from-slate-900 via-slate-800 to-zinc-900 text-white hover:from-slate-950 hover:to-zinc-950 shadow-lg shadow-slate-900/20",
+    buttonOutline:
+      "border-2 border-slate-900 hover:bg-gradient-to-r hover:from-slate-900 hover:to-zinc-900 hover:text-white hover:shadow-lg hover:shadow-slate-900/20",
+    card: "bg-white/80 backdrop-blur-sm",
+    cardHover:
+      "group-hover:shadow-2xl group-hover:shadow-slate-900/10 group-hover:bg-white",
+    accent: "bg-gradient-to-r from-slate-900 to-zinc-900",
+    accentText: "text-slate-900",
+    tag: "bg-white/80 backdrop-blur-sm border-2 border-slate-300 text-slate-700 group-hover:border-slate-900 group-hover:bg-gradient-to-r group-hover:from-slate-900 group-hover:to-zinc-900 group-hover:text-white group-hover:shadow-md",
     descriptionBg:
-      "bg-gradient-to-br from-gray-50 to-gray-100 group-hover:from-gray-100 group-hover:to-gray-200",
-    numberBg: "text-gray-200 group-hover:text-gray-300",
-    gradient: "bg-gradient-to-br from-white to-gray-50",
+      "bg-gradient-to-br from-slate-100/80 via-zinc-100/80 to-slate-100/80 backdrop-blur-sm group-hover:from-slate-200/90 group-hover:via-zinc-200/90 group-hover:to-slate-200/90",
+    numberBg: "text-slate-200/60 group-hover:text-slate-300/70",
+    gradient: "bg-gradient-to-br from-slate-50 via-white to-zinc-50",
   },
   dark: {
     name: "Dark",
@@ -111,6 +113,29 @@ export const themes = {
       "bg-gradient-to-br from-green-100 via-emerald-100 to-teal-100 group-hover:from-green-200 group-hover:via-emerald-200 group-hover:to-teal-200",
     numberBg: "text-green-100 group-hover:text-emerald-200",
     gradient: "bg-gradient-to-br from-green-50 via-emerald-100 to-teal-100",
+  },
+  noir: {
+    name: "Noir",
+    bg: "bg-gradient-to-br from-neutral-900 via-stone-900 to-zinc-950",
+    text: "text-neutral-100",
+    textSecondary: "text-neutral-300",
+    textTertiary: "text-neutral-400",
+    border: "border-neutral-700",
+    borderHover: "group-hover:border-neutral-400",
+    button:
+      "bg-gradient-to-r from-neutral-100 via-stone-100 to-zinc-100 text-neutral-900 hover:from-white hover:to-neutral-50 shadow-lg shadow-neutral-100/10",
+    buttonOutline:
+      "border-2 border-neutral-300 hover:bg-gradient-to-r hover:from-neutral-100 hover:to-zinc-100 hover:text-neutral-900 hover:shadow-lg hover:shadow-neutral-100/10",
+    card: "bg-gradient-to-br from-neutral-800/80 to-stone-900/80 backdrop-blur-sm",
+    cardHover:
+      "group-hover:shadow-2xl group-hover:shadow-neutral-100/5 group-hover:from-neutral-800 group-hover:to-stone-900",
+    accent: "bg-gradient-to-r from-neutral-100 to-zinc-100",
+    accentText: "text-neutral-100",
+    tag: "bg-neutral-800/80 backdrop-blur-sm border-2 border-neutral-700 text-neutral-300 group-hover:border-neutral-400 group-hover:bg-gradient-to-r group-hover:from-neutral-100 group-hover:to-zinc-100 group-hover:text-neutral-900 group-hover:shadow-md",
+    descriptionBg:
+      "bg-gradient-to-br from-neutral-700/50 via-stone-800/50 to-zinc-800/50 backdrop-blur-sm group-hover:from-neutral-700/70 group-hover:via-stone-800/70 group-hover:to-zinc-800/70",
+    numberBg: "text-neutral-800/60 group-hover:text-neutral-700/70",
+    gradient: "bg-gradient-to-br from-neutral-900 via-stone-900 to-zinc-950",
   },
   gad: {
     name: "GAD Awareness",
