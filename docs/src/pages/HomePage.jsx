@@ -3,8 +3,10 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { TypeAnimation } from "react-type-animation";
 import PageTransition from "../components/PageTransition";
+import { useTheme } from "../context/ThemeContext";
 
 const HomePage = () => {
+  const { theme } = useTheme();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -42,21 +44,23 @@ const HomePage = () => {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <motion.div variants={itemVariants} className="mb-8">
-                <span className="text-sm text-gray-500 tracking-[0.3em] uppercase">
+                <span
+                  className={`text-sm ${theme.textTertiary} tracking-[0.3em] uppercase`}
+                >
                   Welcome
                 </span>
               </motion.div>
 
               <motion.h1
                 variants={itemVariants}
-                className="text-5xl md:text-7xl font-light leading-tight mb-6"
+                className={`text-5xl md:text-7xl font-light leading-tight mb-6 ${theme.text}`}
               >
                 I'm <span className="font-medium">Franklin</span>
               </motion.h1>
 
               <motion.div
                 variants={itemVariants}
-                className="text-xl md:text-2xl text-gray-600 mb-8 h-16"
+                className={`text-xl md:text-2xl ${theme.textSecondary} mb-8 h-16`}
               >
                 <TypeAnimation
                   sequence={[
@@ -75,7 +79,7 @@ const HomePage = () => {
 
               <motion.p
                 variants={itemVariants}
-                className="text-gray-600 leading-relaxed mb-12 max-w-lg"
+                className={`${theme.textSecondary} leading-relaxed mb-12 max-w-lg`}
               >
                 Good developers do more than just write code; they simplify
                 complex code, boost its efficiency, and ensure its long-term
@@ -87,7 +91,7 @@ const HomePage = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-3 bg-black text-white text-sm tracking-wider hover:bg-gray-900 transition-colors"
+                    className={`px-8 py-3 ${theme.button} text-sm tracking-wider transition-colors`}
                     data-cursor="pointer"
                   >
                     VIEW PROJECTS
@@ -97,7 +101,7 @@ const HomePage = () => {
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-8 py-3 border border-black text-sm tracking-wider hover:bg-black hover:text-white transition-all"
+                    className={`px-8 py-3 ${theme.buttonOutline} border text-sm tracking-wider transition-all`}
                     data-cursor="pointer"
                   >
                     GET IN TOUCH
@@ -125,8 +129,9 @@ const HomePage = () => {
                   <motion.path
                     d="M 100,200 Q 200,100 300,200 T 100,200"
                     fill="none"
-                    stroke="black"
+                    stroke="currentColor"
                     strokeWidth="1"
+                    className={theme.accentText}
                     initial={{ pathLength: 0 }}
                     animate={{ pathLength: 1 }}
                     transition={{
@@ -150,10 +155,12 @@ const HomePage = () => {
               transition={{ duration: 2, repeat: Infinity }}
               className="flex flex-col items-center"
             >
-              <span className="text-xs text-gray-500 tracking-wider mb-2 rotate-90">
+              <span
+                className={`text-xs ${theme.textTertiary} tracking-wider mb-2 rotate-90`}
+              >
                 SCROLL
               </span>
-              <div className="w-[1px] h-20 bg-gray-300" />
+              <div className={`w-[1px] h-20 ${theme.border}`} />
             </motion.div>
           </motion.div>
         </motion.div>

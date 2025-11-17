@@ -6,8 +6,10 @@ import {
   useLocation,
 } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import Navbar from "./components/Navbar";
 import Loader from "./components/Loader";
+import ThemeSwitcher from "./components/ThemeSwitcher";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ProjectsPage from "./pages/ProjectsPage";
@@ -28,26 +30,38 @@ function AnimatedRoutes() {
   );
 }
 
-function App() {
+function AppContent() {
   const [loading, setLoading] = useState(true);
+  const { theme } = useTheme();
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2500);
   }, []);
 
   return (
-    <Router>
-      <div className="bg-white text-gray-900 min-h-screen">
-        <AnimatePresence>{loading && <Loader />}</AnimatePresence>
+    <div
+      className={`${theme.bg} ${theme.text} min-h-screen transition-colors duration-500`}
+    >
+      <AnimatePresence>{loading && <Loader />}</AnimatePresence>
 
-        {!loading && (
-          <>
-            <Navbar />
-            <AnimatedRoutes />
-          </>
-        )}
-      </div>
-    </Router>
+      {!loading && (
+        <>
+          <Navbar />
+          <AnimatedRoutes />
+          <ThemeSwitcher />
+        </>
+      )}
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <Router>
+        <AppContent />
+      </Router>
+    </ThemeProvider>
   );
 }
 

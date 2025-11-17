@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +28,7 @@ const Navbar = () => {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-          scrolled ? "bg-white/80 backdrop-blur-md" : "bg-transparent"
+          scrolled ? `${theme.bg}/80 backdrop-blur-md` : "bg-transparent"
         }`}
       >
         <div className="px-8 md:px-16 py-6">
@@ -34,7 +36,7 @@ const Navbar = () => {
             <Link to="/">
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="text-2xl font-light tracking-wider"
+                className={`text-2xl font-light tracking-wider ${theme.text}`}
               >
                 FRANKLIN-BU
               </motion.div>
@@ -45,20 +47,26 @@ const Navbar = () => {
               {menuItems.map((item) => (
                 <Link key={item.path} to={item.path}>
                   <motion.div whileHover={{ y: -2 }} className="relative group">
-                    <span className="text-xs text-gray-400 mr-2">
+                    <span className={`text-xs ${theme.textTertiary} mr-2`}>
                       {item.number}
                     </span>
                     <span
                       className={`text-sm tracking-wider ${
                         location.pathname === item.path
-                          ? "text-black"
-                          : "text-gray-600"
-                      } hover:text-black transition-colors`}
+                          ? theme.text
+                          : theme.textSecondary
+                      } transition-colors`}
+                      style={{
+                        color:
+                          location.pathname === item.path
+                            ? undefined
+                            : undefined,
+                      }}
                     >
                       {item.label}
                     </span>
                     <motion.div
-                      className="absolute -bottom-1 left-0 h-[1px] bg-black"
+                      className={`absolute -bottom-1 left-0 h-[1px] ${theme.accent}`}
                       initial={{ width: 0 }}
                       animate={{
                         width: location.pathname === item.path ? "100%" : 0,
@@ -78,15 +86,15 @@ const Navbar = () => {
             >
               <motion.span
                 animate={{ rotate: isOpen ? 45 : 0, y: isOpen ? 0 : -4 }}
-                className="absolute left-0 w-full h-[1px] bg-black"
+                className={`absolute left-0 w-full h-[1px] ${theme.accent}`}
               />
               <motion.span
                 animate={{ opacity: isOpen ? 0 : 1 }}
-                className="absolute left-0 w-full h-[1px] bg-black"
+                className={`absolute left-0 w-full h-[1px] ${theme.accent}`}
               />
               <motion.span
                 animate={{ rotate: isOpen ? -45 : 0, y: isOpen ? 0 : 4 }}
-                className="absolute left-0 w-full h-[1px] bg-black"
+                className={`absolute left-0 w-full h-[1px] ${theme.accent}`}
               />
             </button>
           </div>
@@ -105,7 +113,7 @@ const Navbar = () => {
               duration: 0.5,
               ease: [0.76, 0, 0.24, 1],
             }}
-            className="fixed inset-0 bg-white z-30 md:hidden"
+            className={`fixed inset-0 ${theme.bg} z-30 md:hidden`}
           >
             <div className="flex flex-col justify-center items-center h-full">
               {menuItems.map((item, index) => (
@@ -120,10 +128,12 @@ const Navbar = () => {
                     onClick={() => setIsOpen(false)}
                     className="block py-4"
                   >
-                    <span className="text-gray-400 text-sm mr-4">
+                    <span className={`${theme.textTertiary} text-sm mr-4`}>
                       {item.number}
                     </span>
-                    <span className="text-3xl font-light">{item.label}</span>
+                    <span className={`text-3xl font-light ${theme.text}`}>
+                      {item.label}
+                    </span>
                   </Link>
                 </motion.div>
               ))}

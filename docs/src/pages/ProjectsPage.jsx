@@ -2,10 +2,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import PageTransition from "../components/PageTransition";
+import { useTheme } from "../context/ThemeContext";
 import campusTraceLogo from "../images/CampusTrace.png";
 
 const ProjectsPage = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
+  const { theme } = useTheme();
 
   const projects = [
     {
@@ -61,7 +63,7 @@ const ProjectsPage = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-sm text-gray-500 tracking-[0.3em] uppercase"
+              className={`text-sm ${theme.textTertiary} tracking-[0.3em] uppercase`}
             >
               Portfolio
             </motion.span>
@@ -69,7 +71,7 @@ const ProjectsPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-5xl md:text-7xl font-light mt-4"
+              className={`text-5xl md:text-7xl font-light mt-4 ${theme.text}`}
             >
               Selected <span className="font-medium">Projects</span>
             </motion.h1>
@@ -96,20 +98,34 @@ const ProjectsPage = () => {
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <div className="relative border border-gray-200 p-8 md:p-12 group-hover:border-black group-hover:shadow-2xl transition-all duration-500">
+                  <div
+                    className={`relative ${theme.border} border p-8 md:p-12 ${theme.borderHover} ${theme.cardHover} transition-all duration-500 ${theme.card}`}
+                  >
                     {/* Status Badge */}
                     <motion.div
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.5 }}
-                      className="absolute top-8 right-8 px-4 py-1 bg-black text-white text-xs tracking-wider"
+                      className={`absolute top-8 right-8 px-4 py-1 ${
+                        theme.accent
+                      } ${
+                        theme.bg === "bg-white" ||
+                        theme.bg === "bg-pink-50" ||
+                        theme.bg === "bg-blue-50" ||
+                        theme.bg === "bg-green-50" ||
+                        theme.bg === "bg-teal-50"
+                          ? "text-white"
+                          : "text-black"
+                      } text-xs tracking-wider`}
                     >
                       {project.status}
                     </motion.div>
 
                     {/* Project Number */}
                     <div className="mb-8">
-                      <span className="text-6xl md:text-8xl font-light text-gray-200 group-hover:text-gray-300 transition-colors duration-500">
+                      <span
+                        className={`text-6xl md:text-8xl font-light ${theme.numberBg} transition-colors duration-500`}
+                      >
                         0{index + 1}
                       </span>
                     </div>
@@ -124,7 +140,9 @@ const ProjectsPage = () => {
                             transition={{ duration: 0.3 }}
                             className="flex-shrink-0"
                           >
-                            <div className="w-20 h-20 md:w-24 md:h-24 bg-white border-2 border-gray-200 group-hover:border-black transition-all duration-500 flex items-center justify-center overflow-hidden">
+                            <div
+                              className={`w-20 h-20 md:w-24 md:h-24 ${theme.card} border-2 ${theme.border} ${theme.borderHover} transition-all duration-500 flex items-center justify-center overflow-hidden`}
+                            >
                               <img
                                 src={project.logo}
                                 alt={`${project.title} logo`}
@@ -139,16 +157,22 @@ const ProjectsPage = () => {
 
                           {/* Title */}
                           <div className="flex-1">
-                            <motion.h2 className="text-4xl md:text-6xl font-light group-hover:translate-x-2 transition-transform duration-500">
+                            <motion.h2
+                              className={`text-4xl md:text-6xl font-light group-hover:translate-x-2 transition-transform duration-500 ${theme.text}`}
+                            >
                               {project.title}
                             </motion.h2>
                             <div className="flex items-center gap-4 mt-2">
-                              <span className="text-sm text-gray-500 tracking-wider">
+                              <span
+                                className={`text-sm ${theme.textTertiary} tracking-wider`}
+                              >
                                 {project.year}
                               </span>
-                              <span className="w-1 h-1 bg-gray-400 rounded-full" />
+                              <span
+                                className={`w-1 h-1 ${theme.textTertiary} rounded-full`}
+                              />
                               <motion.div className="flex items-center gap-2 text-sm tracking-wider group-hover:gap-3 transition-all duration-300">
-                                <span className="text-gray-700">
+                                <span className={theme.textSecondary}>
                                   VIEW PROJECT
                                 </span>
                                 <motion.span
@@ -165,7 +189,7 @@ const ProjectsPage = () => {
                                         ? Infinity
                                         : 0,
                                   }}
-                                  className="text-black"
+                                  className={theme.accentText}
                                 >
                                   →
                                 </motion.span>
@@ -177,8 +201,12 @@ const ProjectsPage = () => {
 
                       {/* Description Section */}
                       <div className="md:col-span-12">
-                        <div className="bg-gray-50 group-hover:bg-gray-100 transition-colors duration-500 p-6 md:p-8 border-l-4 border-black">
-                          <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+                        <div
+                          className={`${theme.descriptionBg} transition-colors duration-500 p-6 md:p-8 border-l-4 ${theme.accent}`}
+                        >
+                          <p
+                            className={`${theme.textSecondary} leading-relaxed text-base md:text-lg`}
+                          >
                             {project.description}
                           </p>
                         </div>
@@ -193,7 +221,7 @@ const ProjectsPage = () => {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               transition={{ delay: 0.6 + i * 0.1 }}
-                              className="text-xs tracking-wider px-5 py-2.5 bg-white border border-gray-300 text-gray-700 group-hover:border-black group-hover:bg-black group-hover:text-white transition-all duration-300"
+                              className={`text-xs tracking-wider px-5 py-2.5 ${theme.tag} transition-all duration-300`}
                             >
                               {tag}
                             </motion.span>
@@ -212,7 +240,7 @@ const ProjectsPage = () => {
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="border-t border-gray-200 mt-8"
+            className={`border-t ${theme.border} mt-8`}
           />
 
           {/* More Projects Coming Soon */}
@@ -222,12 +250,14 @@ const ProjectsPage = () => {
             transition={{ delay: 1 }}
             className="mt-20 text-center"
           >
-            <p className="text-gray-500 mb-8">More projects coming soon...</p>
+            <p className={`${theme.textTertiary} mb-8`}>
+              More projects coming soon...
+            </p>
             <Link to="/">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-8 py-3 border border-black text-sm tracking-wider hover:bg-black hover:text-white transition-all"
+                className={`px-8 py-3 ${theme.buttonOutline} border text-sm tracking-wider transition-all`}
               >
                 BACK TO HOME
               </motion.button>
