@@ -580,7 +580,7 @@ const Portfolio = () => {
                 skills={[
                   "React.js",
                   "Tailwind CSS",
-                  "TypeScript",
+                  "JavaScript",
                   "HTML5/CSS3",
                   "Framer Motion",
                 ]}
@@ -596,7 +596,16 @@ const Portfolio = () => {
                     size={40}
                   />
                 }
-                skills={["Node.js", "Python", "Java", "Supabase", "PostgreSQL"]}
+                skills={[
+                  "Node.js",
+                  "Python",
+                  "Java",
+                  "C++",
+                  "Supabase",
+                  "PostgreSQL",
+                  "Gemini",
+                  "Github Copilot",
+                ]}
                 darkMode={darkMode}
               />
             </RevealOnScroll>
