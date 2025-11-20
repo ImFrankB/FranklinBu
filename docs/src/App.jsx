@@ -374,7 +374,7 @@ const Portfolio = () => {
                   darkMode ? "text-zinc-100" : "text-slate-900"
                 }`}
               >
-                Software Developer
+                AI-Augmented Software Developer
               </span>{" "}
             </p>
           </RevealOnScroll>
@@ -387,7 +387,8 @@ const Portfolio = () => {
             >
               "Good developers do more than just write code; they simplify
               complex logic, boost efficiency, and ensure long-term
-              maintainability."
+              maintainability. I leverage AI tools to enhance my workflow and
+              deliver better solutions faster."
             </p>
           </RevealOnScroll>
 
@@ -517,6 +518,27 @@ const Portfolio = () => {
                 </p>
               </RevealOnScroll>
 
+              <RevealOnScroll delay={700}>
+                <div
+                  className={`p-5 rounded-xl border-l-4 ${
+                    darkMode
+                      ? "bg-blue-500/10 border-blue-500 text-blue-300"
+                      : "bg-blue-50 border-blue-500 text-blue-700"
+                  }`}
+                >
+                  <p className="font-semibold mb-2 flex items-center gap-2">
+                    <Sparkles size={18} />
+                    AI-Augmented Developer
+                  </p>
+                  <p className="text-sm leading-relaxed">
+                    I leverage AI tools to enhance my development workflow,
+                    accelerate problem-solving, and deliver higher-quality code.
+                    AI augmentation allows me to focus on architecture and
+                    creativity while maintaining code excellence.
+                  </p>
+                </div>
+              </RevealOnScroll>
+
               <RevealOnScroll delay={800}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <InfoItem
@@ -603,8 +625,6 @@ const Portfolio = () => {
                   "C++",
                   "Supabase",
                   "PostgreSQL",
-                  "Gemini",
-                  "Github Copilot",
                 ]}
                 darkMode={darkMode}
               />
@@ -624,7 +644,7 @@ const Portfolio = () => {
                   "Git & GitHub",
                   "VS Code",
                   "Figma",
-                  "Data Structures",
+                  "AI Tools (Claude, ChatGPT. Github Copilot)",
                   "Agile Methodology",
                 ]}
                 darkMode={darkMode}
@@ -702,7 +722,7 @@ const Portfolio = () => {
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {["React Native", "Python", "Supabase", "AI/ML"].map(
+                    {["React native/JS", "Python", "Supabase", "AI/ML"].map(
                       (tag) => (
                         <span
                           key={tag}
