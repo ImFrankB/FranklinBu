@@ -18,8 +18,8 @@ import {
   Sparkles,
   ExternalLink,
 } from "lucide-react";
-import profileImg from "./images/GraduationPic.jpg";
-import campusTraceImg from "./images/CampusTraceImage.png";
+import profileImg from "/images/GraduationPic.jpg";
+import campusTraceImg from "/images/CampusTraceImage.png";
 
 // --- Custom Hook for Scroll Animations ---
 const useElementOnScreen = (options) => {
