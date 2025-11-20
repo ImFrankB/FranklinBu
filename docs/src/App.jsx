@@ -510,11 +510,12 @@ const Portfolio = () => {
                     darkMode ? "text-zinc-300" : "text-slate-600"
                   }`}
                 >
-                  I describe myself as an intermediate web developer actively
-                  exploring the realms of data science. My passion lies in
-                  bridging the gap between complex backend logic and intuitive,
-                  beautiful user experiences. I don't just build websites; I
-                  build digital solutions that solve real problems.
+                  I'm a web developer exploring machine learning and AI. I use
+                  AI tools to enhance my work—turning complex backend systems
+                  into clean, easy-to-use interfaces that people actually enjoy.
+                  Rather than just building websites, I create smart digital
+                  solutions that solve real problems. I believe great technology
+                  should be both powerful and simple.
                 </p>
               </RevealOnScroll>
 
@@ -563,7 +564,7 @@ const Portfolio = () => {
                   <InfoItem
                     icon={<Code2 size={18} />}
                     label="Focus"
-                    value="Web Dev & Data Science"
+                    value="Web/App Dev, ML, AI"
                     darkMode={darkMode}
                   />
                 </div>
@@ -753,7 +754,32 @@ const Portfolio = () => {
                 </div>
               </div>
             </RevealOnScroll>
-            {/* Add more cards here with same structure */}
+
+            {/* More Projects Coming Soon */}
+            <RevealOnScroll delay={400} animation="fadeUp">
+              <div
+                className={`col-span-1 md:col-span-2 p-8 rounded-2xl border-2 border-dashed text-center ${
+                  darkMode
+                    ? "border-zinc-800 bg-zinc-900/50"
+                    : "border-slate-300 bg-slate-50"
+                }`}
+              >
+                <div className="flex flex-col items-center gap-4">
+                  <h3 className="text-2xl font-bold font-industry">
+                    More Projects Coming Soon
+                  </h3>
+                  <p
+                    className={`max-w-md ${
+                      darkMode ? "text-zinc-400" : "text-slate-600"
+                    }`}
+                  >
+                    I'm currently working on several exciting projects. Stay
+                    tuned for updates on web applications, mobile apps, and
+                    AI-powered solutions!
+                  </p>
+                </div>
+              </div>
+            </RevealOnScroll>
           </div>
         </div>
       </section>
@@ -787,7 +813,6 @@ const Portfolio = () => {
                 year="2023 - Present"
                 title="BS Computer Science"
                 school="Isabela State University"
-                description="Dean's Lister. Focusing on Software Engineering & Algorithms."
                 darkMode={darkMode}
                 active
               />
@@ -797,7 +822,6 @@ const Portfolio = () => {
                 year="2021 - 2023"
                 title="Senior High School"
                 school="Odizee School Of Achievers"
-                description="Graduated with honors, focusing on STEM track."
                 darkMode={darkMode}
               />
             </RevealOnScroll>
