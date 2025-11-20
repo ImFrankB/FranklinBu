@@ -528,7 +528,6 @@ const Portfolio = () => {
                   }`}
                 >
                   <p className="font-semibold mb-2 flex items-center gap-2">
-                    <Sparkles size={18} />
                     AI-Augmented Developer
                   </p>
                   <p className="text-sm leading-relaxed">
