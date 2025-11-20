@@ -16,6 +16,7 @@ import {
   Send,
   ArrowUpRight,
   Sparkles,
+  ExternalLink,
 } from "lucide-react";
 import profileImg from "./images/GraduationPic.jpg";
 import campusTraceImg from "./images/CampusTraceImage.png";
@@ -423,12 +424,12 @@ const Portfolio = () => {
           <RevealOnScroll delay={1000}>
             <div className="mt-16 flex justify-center gap-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
               <SocialLink
-                href="#"
+                href="https://github.com/ImFrankB"
                 icon={<Github size={24} />}
                 darkMode={darkMode}
               />
               <SocialLink
-                href="#"
+                href="https://www.linkedin.com/in/john-franklin-bugauisan-86aa16309/"
                 icon={<Linkedin size={24} />}
                 darkMode={darkMode}
               />
@@ -691,7 +692,7 @@ const Portfolio = () => {
                     items seamlessly.
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {["React Native", "Python", "Supabase", "AI/ML"].map(
                       (tag) => (
                         <span
@@ -707,6 +708,19 @@ const Portfolio = () => {
                       )
                     )}
                   </div>
+
+                  <a
+                    href="https://campustrace.site"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                      darkMode
+                        ? "bg-white text-black hover:bg-zinc-200"
+                        : "bg-blue-600 text-white hover:bg-blue-700"
+                    }`}
+                  >
+                    View Project <ExternalLink size={16} />
+                  </a>
                 </div>
               </div>
             </RevealOnScroll>
@@ -919,7 +933,9 @@ const Portfolio = () => {
           </div>
           <div className="flex gap-8">
             <a
-              href="#"
+              href="https://github.com/ImFrankBlinked"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`transition-colors ${
                 darkMode ? "hover:text-white" : "hover:text-blue-600"
               }`}
@@ -927,7 +943,9 @@ const Portfolio = () => {
               GitHub
             </a>
             <a
-              href="#"
+              href="https://www.linkedin.com/in/john-franklin-bugauisan-86aa16309/"
+              target="_blank"
+              rel="noopener noreferrer"
               className={`transition-colors ${
                 darkMode ? "hover:text-white" : "hover:text-blue-600"
               }`}
@@ -935,12 +953,12 @@ const Portfolio = () => {
               LinkedIn
             </a>
             <a
-              href="#"
+              href="mailto:johnfranklinbugauisan0@gmail.com"
               className={`transition-colors ${
                 darkMode ? "hover:text-white" : "hover:text-blue-600"
               }`}
             >
-              Twitter
+              Email
             </a>
           </div>
         </div>
