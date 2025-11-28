@@ -144,8 +144,8 @@ const Portfolio = () => {
 
   const navLinks = [
     { name: "About", href: "#about" },
-    { name: "Projects", href: "#projects" },
     { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
     { name: "Education", href: "#education" },
     { name: "Contact", href: "#contact" },
   ];
@@ -191,18 +191,17 @@ const Portfolio = () => {
   return (
     <div
       className={`min-h-screen selection:bg-blue-500 selection:text-white transition-colors duration-500 ${
-        darkMode ? "bg-zinc-950 text-zinc-100" : "bg-slate-50 text-slate-900"
+        darkMode ? "bg-[#141417] text-zinc-100" : "bg-slate-50 text-slate-900"
       }`}
     >
       {/* Ambient Noise Texture for tactile feel */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] z-[1] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
 
-      {/* Navigation */}
       <nav
         className={`fixed w-full z-50 transition-all duration-500 ${
           scrolled
             ? darkMode
-              ? "bg-zinc-950/80 border-zinc-800 backdrop-blur-xl py-2 border-b"
+              ? "bg-[#141417]/80 border-zinc-800 backdrop-blur-xl py-2 border-b"
               : "bg-white/80 border-slate-200 backdrop-blur-xl py-2 border-b"
             : "bg-transparent py-4 border-transparent"
         }`}
@@ -291,7 +290,7 @@ const Portfolio = () => {
         >
           <div
             className={`px-4 pt-2 pb-6 space-y-2 shadow-xl ${
-              darkMode ? "bg-zinc-950 border-b border-zinc-800" : "bg-white"
+              darkMode ? "bg-[#141417] border-b border-zinc-800" : "bg-white"
             }`}
           >
             {navLinks.map((link) => (
@@ -346,7 +345,7 @@ const Portfolio = () => {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              Available for Commission
+              Open for Commission
             </div>
           </RevealOnScroll>
 
@@ -676,7 +675,7 @@ const Portfolio = () => {
                 }`}
               >
                 {/* Enhanced Image Area */}
-                <div className="relative aspect-video overflow-hidden bg-zinc-100 dark:bg-zinc-950 flex items-center justify-center p-8">
+                <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-blue-500/10 to-cyan-500/10 flex items-center justify-center p-8">
                   {/* Interactive Hover Overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
 
@@ -754,28 +753,188 @@ const Portfolio = () => {
               </div>
             </RevealOnScroll>
 
-            {/* More Projects Coming Soon */}
+            {/* Project 2: Car Dealership System */}
             <RevealOnScroll delay={400} animation="fadeUp">
               <div
-                className={`col-span-1 md:col-span-2 p-8 rounded-2xl border-2 border-dashed text-center ${
+                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl h-full flex flex-col ${
                   darkMode
-                    ? "border-zinc-800 bg-zinc-900/50"
-                    : "border-slate-300 bg-slate-50"
+                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
+                    : "bg-white border-slate-200 hover:border-slate-300"
                 }`}
               >
-                <div className="flex flex-col items-center gap-4">
-                  <h3 className="text-2xl font-bold font-industry">
-                    More Projects Coming Soon
-                  </h3>
-                  <p
-                    className={`max-w-md ${
-                      darkMode ? "text-zinc-400" : "text-slate-600"
-                    }`}
-                  >
-                    I'm currently working on several exciting projects. Stay
-                    tuned for updates on web applications, mobile apps, and
-                    AI-powered solutions!
+                <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-orange-500/10 to-red-500/10 flex items-center justify-center p-8">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+                  <img
+                    src="Cardealership.jpg"
+                    alt="Car Dealership System"
+                    className="w-full h-full object-contain drop-shadow-xl transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out will-change-transform"
+                  />
+                  <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                    <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                      View Code <Github size={16} />
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-8 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-2xl font-bold tracking-tight font-industry group-hover:text-blue-500 transition-colors">
+                      Car Dealership System
+                    </h3>
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                        darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-400" : "bg-slate-100 border-slate-200 text-slate-600"
+                      }`}>
+                      2024
+                    </span>
+                  </div>
+                  <p className={`mb-6 text-base leading-relaxed ${darkMode ? "text-zinc-400" : "text-slate-600"}`}>
+                    A desktop application with a GUI and database connection. Handles full CRUD operations for vehicle management and sales recording using Java Swing and MySQL.
                   </p>
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {["Java Swing", "MySQL", "JDBC", "OOP"].map((tag) => (
+                        <span key={tag} className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                            darkMode ? "bg-zinc-800 text-zinc-300" : "bg-blue-50 text-blue-600"
+                          }`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <a
+                      href="https://github.com/imfrankb/franklinbu-basic-system-projects"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                        darkMode ? "bg-white text-black hover:bg-zinc-200" : "bg-blue-600 text-white hover:bg-blue-700"
+                      }`}
+                    >
+                      View Repository <Github size={16} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+
+            {/* Project 3: Personal Development Tracker */}
+            <RevealOnScroll delay={200} animation="fadeUp">
+              <div
+                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl h-full flex flex-col ${
+                  darkMode
+                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
+                    : "bg-white border-slate-200 hover:border-slate-300"
+                }`}
+              >
+                <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-emerald-500/10 to-teal-500/10 flex items-center justify-center p-8">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+                  <img
+                    src="personalDev.jpg"
+                    alt="Personal Development Tracker"
+                    className="w-full h-full object-contain drop-shadow-xl transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out will-change-transform"
+                  />
+                  <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                    <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                      View Code <Github size={16} />
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-8 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-2xl font-bold tracking-tight font-industry group-hover:text-blue-500 transition-colors">
+                      Personal Dev Tracker
+                    </h3>
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                        darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-400" : "bg-slate-100 border-slate-200 text-slate-600"
+                      }`}>
+                      2023
+                    </span>
+                  </div>
+                  <p className={`mb-6 text-base leading-relaxed ${darkMode ? "text-zinc-400" : "text-slate-600"}`}>
+                    A CLI application that uses structs and vectors to manage user goals and habits. Features custom loading animations and color-coded console output for a better UX.
+                  </p>
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {["C++", "Vectors", "Structs", "CLI UI"].map((tag) => (
+                        <span key={tag} className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                            darkMode ? "bg-zinc-800 text-zinc-300" : "bg-blue-50 text-blue-600"
+                          }`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <a
+                      href="https://github.com/imfrankb/franklinbu-basic-system-projects"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                        darkMode ? "bg-white text-black hover:bg-zinc-200" : "bg-blue-600 text-white hover:bg-blue-700"
+                      }`}
+                    >
+                      View Repository <Github size={16} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+
+            {/* Project 4: Enrollment System */}
+            <RevealOnScroll delay={400} animation="fadeUp">
+              <div
+                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl h-full flex flex-col ${
+                  darkMode
+                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
+                    : "bg-white border-slate-200 hover:border-slate-300"
+                }`}
+              >
+                <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-purple-500/10 to-pink-500/10 flex items-center justify-center p-8">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+                  <img
+                    src="enrollmentSystem.png"
+                    alt="Enrollment System"
+                    className="w-full h-full object-contain drop-shadow-xl transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out will-change-transform"
+                  />
+                  <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                    <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                      View Code <Github size={16} />
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-8 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-2xl font-bold tracking-tight font-industry group-hover:text-blue-500 transition-colors">
+                      University Enrollment
+                    </h3>
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                        darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-400" : "bg-slate-100 border-slate-200 text-slate-600"
+                      }`}>
+                      2023
+                    </span>
+                  </div>
+                  <p className={`mb-6 text-base leading-relaxed ${darkMode ? "text-zinc-400" : "text-slate-600"}`}>
+                    A logic-heavy console application that simulates university enrollment. Handles complex branching for different courses (BSCS, BSIS, BSIT) and prerequisites.
+                  </p>
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {["C++", "CLI UI"].map((tag) => (
+                        <span key={tag} className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                            darkMode ? "bg-zinc-800 text-zinc-300" : "bg-blue-50 text-blue-600"
+                          }`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <a
+                      href="https://github.com/imfrankb/franklinbu-basic-system-projects"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                        darkMode ? "bg-white text-black hover:bg-zinc-200" : "bg-blue-600 text-white hover:bg-blue-700"
+                      }`}
+                    >
+                      View Repository <Github size={16} />
+                    </a>
+                  </div>
                 </div>
               </div>
             </RevealOnScroll>
