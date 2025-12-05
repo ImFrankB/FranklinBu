@@ -17,9 +17,14 @@ import {
   ArrowUpRight,
   Sparkles,
   ExternalLink,
+  Award,
+  CheckCircle2,
+  Calendar,
+  Shield,
 } from "lucide-react";
 import profileImg from "/GraduationPic.jpg";
 import campusTraceImg from "/CampusTraceImage.png";
+import huaweiCertImg from "/Certificate.png";
 
 // --- Custom Hook for Scroll Animations ---
 const useElementOnScreen = (options) => {
@@ -123,6 +128,7 @@ const Portfolio = () => {
         "about",
         "projects",
         "skills",
+        "certifications",
         "education",
         "contact",
       ];
@@ -146,6 +152,7 @@ const Portfolio = () => {
     { name: "About", href: "#about" },
     { name: "Skills", href: "#skills" },
     { name: "Projects", href: "#projects" },
+    { name: "Certifications", href: "#certifications" },
     { name: "Education", href: "#education" },
     { name: "Contact", href: "#contact" },
   ];
@@ -688,7 +695,7 @@ const Portfolio = () => {
                   {/* Floating Link Button */}
                   <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
                     <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
-                      View Project <ArrowUpRight size={16} />
+                      Visit Application <ArrowUpRight size={16} />
                     </span>
                   </div>
                 </div>
@@ -747,13 +754,75 @@ const Portfolio = () => {
                         : "bg-blue-600 text-white hover:bg-blue-700"
                     }`}
                   >
-                    View Project <ExternalLink size={16} />
+                    Visit Application <ExternalLink size={16} />
                   </a>
                 </div>
               </div>
             </RevealOnScroll>
 
-            {/* Project 2: Car Dealership System */}
+            {/* Project 2: Odizee School Of Achievers Website */}
+            <RevealOnScroll delay={400} animation="fadeUp">
+              <div
+                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl h-full flex flex-col ${
+                  darkMode
+                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
+                    : "bg-white border-slate-200 hover:border-slate-300"
+                }`}
+              >
+                <div className="relative aspect-video overflow-hidden bg-gradient-to-br from-emerald-500/10 to-teal-500/10 flex items-center justify-center p-8">
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+                  <img
+                    src="OSAwebsite.png"
+                    alt="Odizee School Of Achievers Website"
+                    className="w-full h-full object-contain drop-shadow-xl transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out will-change-transform"
+                  />
+                  <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                    <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                      Visit Website <ExternalLink size={16} />
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-8 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
+                    <h3 className="text-2xl font-bold tracking-tight font-industry group-hover:text-blue-500 transition-colors">
+                      Odizee School Of Achievers, Inc. Official Website
+                    </h3>
+                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                        darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-400" : "bg-slate-100 border-slate-200 text-slate-600"
+                      }`}>
+                      2025
+                    </span>
+                  </div>
+                  <p className={`mb-6 text-base leading-relaxed ${darkMode ? "text-zinc-400" : "text-slate-600"}`}>
+                    Official website for Odizee School Of Achievers featuring a complete Content Management System (CMS) for easy content updates, announcements, and school information management.
+                  </p>
+                  <div className="mt-auto">
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {["React.js", "Tailwind CSS", "CMS", "Responsive"].map((tag) => (
+                        <span key={tag} className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                            darkMode ? "bg-zinc-800 text-zinc-300" : "bg-blue-50 text-blue-600"
+                          }`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <a
+                      href="https://odizeeschoolofachievers.site"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                        darkMode ? "bg-white text-black hover:bg-zinc-200" : "bg-blue-600 text-white hover:bg-blue-700"
+                      }`}
+                    >
+                      Visit Website <ExternalLink size={16} />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+
+            {/* Project 3: Car Dealership System */}
             <RevealOnScroll delay={400} animation="fadeUp">
               <div
                 className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl h-full flex flex-col ${
@@ -934,6 +1003,154 @@ const Portfolio = () => {
                     >
                       View Repository <Github size={16} />
                     </a>
+                  </div>
+                </div>
+              </div>
+            </RevealOnScroll>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications Section */}
+      <section id="certifications" className="py-32 relative">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealOnScroll>
+            <SectionHeading
+              title="Certifications"
+              subtitle="credentials"
+              center
+              darkMode={darkMode}
+            />
+          </RevealOnScroll>
+
+          <div className="mt-16">
+            <RevealOnScroll delay={200} animation="scaleIn">
+              <div
+                className={`group relative rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl ${
+                  darkMode
+                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
+                    : "bg-white border-slate-200 hover:border-slate-300"
+                }`}
+              >
+                {/* Gradient accent */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500 via-red-600 to-red-700"></div>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                  {/* Certificate Image */}
+                  <div className={`relative aspect-[4/3] lg:aspect-auto overflow-hidden ${
+                    darkMode ? "bg-zinc-950" : "bg-slate-50"
+                  }`}>
+                    <img
+                      src={huaweiCertImg}
+                      alt="HUAWEI ICT Academy - Artificial Intelligence and Applications Certificate"
+                      className="w-full h-full object-contain p-4 lg:p-8 transform group-hover:scale-[1.02] transition-transform duration-700"
+                    />
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+
+                  {/* Certificate Details */}
+                  <div className="p-6 sm:p-8 lg:p-10 flex flex-col justify-center">
+                    {/* Badge */}
+                    <div className="flex items-center gap-2 mb-4">
+                      <div className={`p-2 rounded-lg ${
+                        darkMode ? "bg-red-500/10" : "bg-red-50"
+                      }`}>
+                        <Award className="w-5 h-5 text-red-500" />
+                      </div>
+                      <span className={`text-xs font-bold uppercase tracking-wider ${
+                        darkMode ? "text-red-400" : "text-red-600"
+                      }`}>
+                        Professional Certification
+                      </span>
+                    </div>
+
+                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold font-industry mb-2 leading-tight">
+                      <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-600">
+                        HUAWEI ICT Academy
+                      </span>
+                    </h3>
+                    <h4 className={`text-lg sm:text-xl font-semibold mb-4 ${
+                      darkMode ? "text-zinc-200" : "text-slate-800"
+                    }`}>
+                      Artificial Intelligence and Applications
+                    </h4>
+                    
+                    <p className={`text-sm sm:text-base leading-relaxed mb-6 ${
+                      darkMode ? "text-zinc-400" : "text-slate-600"
+                    }`}>
+                      Successfully completed the HUAWEI ICT Academy course on Artificial Intelligence and Applications.
+                    </p>
+
+                    {/* Skills List */}
+                    <div className="mb-6 space-y-2">
+                      {[
+                        "Core AI/ML concepts and methodologies",
+                        "Machine Learning algorithms and applications",
+                        "Artificial Intelligence implementation strategies",
+                        "Cloud-based AI solutions and frameworks"
+                      ].map((skill, idx) => (
+                        <div key={idx} className="flex items-start gap-2">
+                          <CheckCircle2 className={`w-4 h-4 mt-0.5 shrink-0 ${
+                            darkMode ? "text-emerald-400" : "text-emerald-500"
+                          }`} />
+                          <span className={`text-sm ${
+                            darkMode ? "text-zinc-300" : "text-slate-700"
+                          }`}>
+                            {skill}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Credential Details */}
+                    <div className={`p-4 rounded-xl mb-6 ${
+                      darkMode ? "bg-zinc-950 border border-zinc-800" : "bg-slate-50 border border-slate-100"
+                    }`}>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                        <div className="flex items-center gap-2">
+                          <Shield className={`w-4 h-4 ${
+                            darkMode ? "text-zinc-500" : "text-slate-400"
+                          }`} />
+                          <span className={darkMode ? "text-zinc-500" : "text-slate-500"}>ID:</span>
+                          <span className={`font-mono font-medium ${
+                            darkMode ? "text-zinc-200" : "text-slate-700"
+                          }`}>ICT20251205001252</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Calendar className={`w-4 h-4 ${
+                            darkMode ? "text-zinc-500" : "text-slate-400"
+                          }`} />
+                          <span className={darkMode ? "text-zinc-500" : "text-slate-500"}>Valid:</span>
+                          <span className={`font-medium ${
+                            darkMode ? "text-zinc-200" : "text-slate-700"
+                          }`}>Dec 2025 - Dec 2028</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex flex-wrap gap-3">
+                      <a
+                        href="https://e.huawei.com/en/talent"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                          darkMode
+                            ? "bg-red-600 text-white hover:bg-red-500"
+                            : "bg-red-600 text-white hover:bg-red-700"
+                        }`}
+                      >
+                        Verify Certificate <ExternalLink size={16} />
+                      </a>
+                      <span className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium ${
+                        darkMode
+                          ? "bg-zinc-800 text-zinc-300"
+                          : "bg-slate-100 text-slate-600"
+                      }`}>
+                        Issued by HUAWEI ICT Academy
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
