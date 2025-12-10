@@ -374,14 +374,14 @@ const Portfolio = () => {
                 darkMode ? "text-zinc-400" : "text-slate-600"
               }`}
             >
-              Student{" "}
+              AI-Augmented{" "}
               <span
                 className={`font-medium ${
                   darkMode ? "text-zinc-100" : "text-slate-900"
                 }`}
               >
-                AI-Augmented Software Developer
-              </span>{" "}
+                Student Software Engineer & Architect
+              </span>
             </p>
           </RevealOnScroll>
 
@@ -391,10 +391,10 @@ const Portfolio = () => {
                 darkMode ? "text-zinc-500" : "text-slate-500"
               }`}
             >
-              "Good developers do more than just write code; they simplify
-              complex logic, boost efficiency, and ensure long-term
-              maintainability. I leverage AI tools to enhance my workflow and
-              deliver better solutions faster."
+              "I don't just write code—I architect solutions and let AI handle
+              the heavy lifting. My role is the brain behind the system: designing
+              scalable backends, mapping out architectures, and guiding AI tools
+              to execute my vision with precision and speed."
             </p>
           </RevealOnScroll>
 
@@ -502,11 +502,11 @@ const Portfolio = () => {
             <div className="space-y-8">
               <RevealOnScroll delay={400} animation="fadeRight">
                 <h3 className="text-4xl font-bold font-industry leading-tight">
-                  Computer Science Student at{" "}
+                  AI-Augmented{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-500">
-                    Isabela State University
-                  </span>
-                  .
+                    Software Engineer & Architect
+                  </span>{" "}
+                  at Isabela State University.
                 </h3>
               </RevealOnScroll>
 
@@ -529,18 +529,20 @@ const Portfolio = () => {
                 <div
                   className={`p-5 rounded-xl border-l-4 ${
                     darkMode
-                      ? "bg-blue-500/10 border-blue-500 text-blue-300"
-                      : "bg-blue-50 border-blue-500 text-blue-700"
+                      ? "bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-blue-500 text-blue-300"
+                      : "bg-gradient-to-r from-blue-50 to-purple-50 border-blue-500 text-blue-700"
                   }`}
                 >
                   <p className="font-semibold mb-2 flex items-center gap-2">
-                    AI-Augmented Developer
+                    <Sparkles size={18} className="text-purple-400" />
+                    AI-Augmented Software Engineer & Architect
                   </p>
                   <p className="text-sm leading-relaxed">
-                    I leverage AI tools to enhance my development workflow,
-                    accelerate problem-solving, and deliver higher-quality code.
-                    AI augmentation allows me to focus on architecture and
-                    creativity while maintaining code excellence.
+                    I combine AI tools with software engineering principles to
+                    design scalable architectures and build robust solutions.
+                    AI augmentation accelerates my workflow—from system design
+                    to clean code implementation—enabling me to deliver
+                    high-quality software faster.
                   </p>
                 </div>
               </RevealOnScroll>
@@ -650,7 +652,8 @@ const Portfolio = () => {
                   "Git & GitHub",
                   "VS Code",
                   "Figma",
-                  "AI Tools (Claude, ChatGPT. Github Copilot)",
+                  "Notion",
+                  "AI Tools (Gemini, ChatGPT, Claude, Perplexity Github Copilot)",
                   "Agile Methodology",
                 ]}
                 darkMode={darkMode}
