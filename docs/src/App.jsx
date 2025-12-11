@@ -470,13 +470,6 @@ const Portfolio = () => {
             >
               <div className="relative group max-w-md w-full">
                 <div
-                  className={`absolute -inset-1 rounded-[2rem] opacity-10 group-hover:opacity-30 blur-xl transition-opacity duration-500 ${
-                    darkMode
-                      ? "bg-white"
-                      : "bg-black"
-                  }`}
-                ></div>
-                <div
                   className={`relative rounded-[1.8rem] overflow-hidden aspect-[4/5] border-2 transition-transform duration-700 group-hover:scale-[1.02] ${
                     darkMode
                       ? "bg-zinc-900 border-zinc-800"
@@ -490,7 +483,7 @@ const Portfolio = () => {
                     loading="eager"
                     decoding="async"
                     className="w-full h-full object-cover transform transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 will-change-transform"
-                    style={{ imageRendering: "auto" }} // or -webkit-optimize-contrast if supported
+                    style={{ imageRendering: "auto" }}
                   />
                   {/* Overlay gradient for better text readability if needed, or just aesthetic */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
