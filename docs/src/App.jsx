@@ -249,7 +249,7 @@ const Portfolio = () => {
                 <div className="h-6 w-px bg-current opacity-10 mx-2"></div>
                 <button
                   onClick={() => setDarkMode(!darkMode)}
-                  className={`p-2 rounded-full transition-all duration-300 transform hover:rotate-12 ${
+                  className={`p-2 rounded-full transition-all duration-300 ${
                     darkMode
                       ? "bg-zinc-900 hover:bg-zinc-800 text-amber-300"
                       : "bg-slate-100 hover:bg-slate-200 text-slate-600"
@@ -342,7 +342,7 @@ const Portfolio = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <RevealOnScroll>
             <div
-              className={`inline-flex items-center px-4 py-2 rounded-full border text-sm font-medium mb-8 transition-colors hover:scale-105 duration-300 cursor-default ${
+              className={`inline-flex items-center px-4 py-2 rounded-full border text-sm font-medium mb-8 transition-colors duration-300 cursor-default ${
                 darkMode
                   ? "border-zinc-800 bg-zinc-900/50 text-zinc-300"
                   : "border-slate-200 bg-white/80 text-slate-600 shadow-sm"
@@ -380,7 +380,7 @@ const Portfolio = () => {
                   darkMode ? "text-zinc-100" : "text-slate-900"
                 }`}
               >
-                Student Software Engineer & Architect
+                Student Software Engineer | Aspiring Software Architect
               </span>
             </p>
           </RevealOnScroll>
@@ -402,7 +402,7 @@ const Portfolio = () => {
             <div className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center px-4 w-full sm:w-auto">
               <a
                 href="#projects"
-                className={`group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all transform active:scale-95 sm:hover:-translate-y-1 shadow-lg font-industry overflow-hidden text-center ${
+                className={`group relative w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-base sm:text-lg transition-all shadow-lg font-industry overflow-hidden text-center ${
                   darkMode
                     ? "bg-white text-black hover:shadow-white/25"
                     : "bg-emerald-600 text-white hover:shadow-emerald-500/40"
@@ -416,7 +416,7 @@ const Portfolio = () => {
               </a>
               <a
                 href="#contact"
-                className={`w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full border font-bold text-base sm:text-lg transition-all transform active:scale-95 sm:hover:-translate-y-1 flex items-center justify-center gap-2 font-industry ${
+                className={`w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 rounded-full border font-bold text-base sm:text-lg transition-all flex items-center justify-center gap-2 font-industry ${
                   darkMode
                     ? "border-zinc-700 hover:bg-zinc-800 text-zinc-300"
                     : "border-slate-300 hover:bg-slate-100 text-slate-700"
@@ -470,7 +470,7 @@ const Portfolio = () => {
             >
               <div className="relative group max-w-md w-full">
                 <div
-                  className={`relative rounded-[1.8rem] overflow-hidden aspect-[4/5] border-2 transition-transform duration-700 group-hover:scale-[1.02] ${
+                  className={`relative rounded-[1.8rem] overflow-hidden aspect-[4/5] border-2 transition-transform duration-700 ${
                     darkMode
                       ? "bg-zinc-900 border-zinc-800"
                       : "bg-white border-slate-100"
@@ -482,7 +482,7 @@ const Portfolio = () => {
                     alt="John Franklin Bugauisan"
                     loading="eager"
                     decoding="async"
-                    className="w-full h-full object-cover transform transition-transform duration-[1.5s] ease-[cubic-bezier(0.25,1,0.5,1)] group-hover:scale-110 will-change-transform"
+                    className="w-full h-full object-cover"
                     style={{ imageRendering: "auto" }}
                   />
                   {/* Overlay gradient for better text readability if needed, or just aesthetic */}
@@ -495,11 +495,11 @@ const Portfolio = () => {
             <div className="space-y-8">
               <RevealOnScroll delay={400} animation="fadeRight">
                 <h3 className="text-4xl font-bold font-industry leading-tight">
-                  AI-Augmented{" "}
+                  Student Software Engineer{" "}
                   <span className={darkMode ? "text-white" : "text-slate-900"}>
-                    Software Engineer & Architect
-                  </span>{" "}
-                  at Isabela State University.
+                    at Isabela State University
+                  </span>
+                  .
                 </h3>
               </RevealOnScroll>
 
@@ -518,26 +518,7 @@ const Portfolio = () => {
                 </p>
               </RevealOnScroll>
 
-              <RevealOnScroll delay={700}>
-                <div
-                  className={`p-5 rounded-xl border-l-4 ${
-                    darkMode
-                      ? "bg-zinc-900 border-zinc-600 text-zinc-300"
-                      : "bg-slate-50 border-slate-400 text-slate-700"
-                  }`}
-                >
-                  <p className="font-semibold mb-2 flex items-center gap-2">
-                    AI-Augmented Software Engineer & Architect
-                  </p>
-                  <p className={`text-sm leading-relaxed ${darkMode ? "text-zinc-400" : "text-slate-600"}`}>
-                    I combine AI tools with software engineering principles to
-                    design scalable architectures and build robust solutions.
-                    AI augmentation accelerates my workflow—from system design
-                    to clean code implementation—enabling me to deliver
-                    high-quality software faster.
-                  </p>
-                </div>
-              </RevealOnScroll>
+
 
               <RevealOnScroll delay={800}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -668,21 +649,21 @@ const Portfolio = () => {
             {/* Project Card: CampusTrace */}
             <RevealOnScroll delay={200} animation="scaleIn">
               <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl ${
+                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 ${
                   darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
-                    : "bg-white border-slate-200 hover:border-slate-300"
+                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                    : "bg-white border-slate-200 hover:border-emerald-500"
                 }`}
               >
                 {/* Enhanced Image Area */}
-                <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
+                <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
                   {/* Interactive Hover Overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
 
                   <img
                     src={campusTraceImg}
                     alt="CampusTrace Project"
-                    className="w-full h-full object-contain drop-shadow-xl transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out will-change-transform"
+                    className="w-full h-full object-contain drop-shadow-xl"
                   />
 
                   {/* Floating Link Button */}
@@ -693,7 +674,7 @@ const Portfolio = () => {
                   </div>
                 </div>
 
-                <div className="p-8">
+                <div className="p-6 sm:p-8">
                   <div className="flex justify-between items-start mb-4">
                     <h3 className={`text-2xl font-bold tracking-tight font-industry transition-colors ${darkMode ? "group-hover:text-zinc-300" : "group-hover:text-slate-600"}`}>
                       CampusTrace
@@ -741,7 +722,7 @@ const Portfolio = () => {
                     href="https://campustrace.site"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all ${
                       darkMode
                         ? "bg-white text-black hover:bg-zinc-200"
                         : "bg-emerald-600 text-white hover:bg-emerald-700"
@@ -756,18 +737,18 @@ const Portfolio = () => {
             {/* Project 2: Odizee School Of Achievers Website */}
             <RevealOnScroll delay={400} animation="fadeUp">
               <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl h-full flex flex-col ${
+                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
                   darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
-                    : "bg-white border-slate-200 hover:border-slate-300"
+                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                    : "bg-white border-slate-200 hover:border-emerald-500"
                 }`}
               >
-                <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
+                <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
                   <img
                     src="OSAwebsite.png"
                     alt="Odizee School Of Achievers Website"
-                    className="w-full h-full object-contain drop-shadow-xl transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out will-change-transform"
+                    className="w-full h-full object-contain drop-shadow-xl"
                   />
                   <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
                     <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
@@ -818,10 +799,10 @@ const Portfolio = () => {
             {/* Project 3: Car Dealership System */}
             <RevealOnScroll delay={400} animation="fadeUp">
               <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl h-full flex flex-col ${
+                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
                   darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
-                    : "bg-white border-slate-200 hover:border-slate-300"
+                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                    : "bg-white border-slate-200 hover:border-emerald-500"
                 }`}
               >
                 <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
@@ -829,7 +810,7 @@ const Portfolio = () => {
                   <img
                     src="Cardealership.jpg"
                     alt="Car Dealership System"
-                    className="w-full h-full object-contain drop-shadow-xl transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out will-change-transform"
+                    className="w-full h-full object-contain drop-shadow-xl"
                   />
                   <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
                     <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
@@ -880,10 +861,10 @@ const Portfolio = () => {
             {/* Project 3: Personal Development Tracker */}
             <RevealOnScroll delay={200} animation="fadeUp">
               <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl h-full flex flex-col ${
+                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
                   darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
-                    : "bg-white border-slate-200 hover:border-slate-300"
+                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                    : "bg-white border-slate-200 hover:border-emerald-500"
                 }`}
               >
                 <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
@@ -891,7 +872,7 @@ const Portfolio = () => {
                   <img
                     src="personalDev.jpg"
                     alt="Personal Development Tracker"
-                    className="w-full h-full object-contain drop-shadow-xl transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out will-change-transform"
+                    className="w-full h-full object-contain drop-shadow-xl"
                   />
                   <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
                     <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
@@ -942,10 +923,10 @@ const Portfolio = () => {
             {/* Project 4: Enrollment System */}
             <RevealOnScroll delay={400} animation="fadeUp">
               <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 hover:shadow-2xl h-full flex flex-col ${
+                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
                   darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
-                    : "bg-white border-slate-200 hover:border-slate-300"
+                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                    : "bg-white border-slate-200 hover:border-emerald-500"
                 }`}
               >
                 <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
@@ -953,7 +934,7 @@ const Portfolio = () => {
                   <img
                     src="enrollmentSystem.png"
                     alt="Enrollment System"
-                    className="w-full h-full object-contain drop-shadow-xl transform group-hover:scale-[1.05] group-hover:-rotate-1 transition-transform duration-700 ease-out will-change-transform"
+                    className="w-full h-full object-contain drop-shadow-xl"
                   />
                   <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
                     <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
@@ -1021,22 +1002,22 @@ const Portfolio = () => {
             
             {/* HUAWEI Certificate */}
             <RevealOnScroll delay={200} animation="fadeUp">
-              <div className={`group h-full rounded-xl border transition-all duration-300 hover:border-emerald-500/50 flex flex-col ${
+              <div className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
                 darkMode
-                  ? "bg-zinc-950 border-zinc-800"
-                  : "bg-white border-slate-200 hover:border-emerald-400"
+                  ? "bg-zinc-950 border-zinc-800 hover:border-emerald-500/50"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
               }`}>
                 {/* Certificate Image */}
                 <div className={`aspect-[4/3] overflow-hidden rounded-t-xl ${darkMode ? "bg-black" : "bg-slate-50"}`}>
                   <img
                     src={huaweiCertImg}
                     alt="HUAWEI ICT Academy Certificate"
-                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-contain p-4"
                   />
                 </div>
 
                 {/* Content */}
-                <div className="p-5 flex flex-col flex-grow">
+                <div className="p-4 sm:p-5 flex flex-col flex-grow">
                   {/* Icon + Title Row */}
                   <div className="flex items-start gap-3 mb-3">
                     <div className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
@@ -1045,7 +1026,7 @@ const Portfolio = () => {
                       <Award size={16} className="text-emerald-500" />
                     </div>
                     <div>
-                      <h3 className={`font-bold font-industry leading-tight ${
+                      <h3 className={`font-bold font-industry leading-tight text-sm sm:text-base ${
                         darkMode ? "text-white" : "text-slate-900"
                       }`}>
                         AI and Applications
@@ -1096,22 +1077,22 @@ const Portfolio = () => {
 
             {/* Vanderbilt Certificate */}
             <RevealOnScroll delay={300} animation="fadeUp">
-              <div className={`group h-full rounded-xl border transition-all duration-300 hover:border-emerald-500/50 flex flex-col ${
+              <div className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
                 darkMode
-                  ? "bg-zinc-950 border-zinc-800"
-                  : "bg-white border-slate-200 hover:border-emerald-400"
+                  ? "bg-zinc-950 border-zinc-800 hover:border-emerald-500/50"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
               }`}>
                 {/* Certificate Image */}
                 <div className={`aspect-[4/3] overflow-hidden rounded-t-xl ${darkMode ? "bg-black" : "bg-slate-50"}`}>
                   <img
                     src="/AIagent.jpg"
                     alt="Claude Code Certificate"
-                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-contain p-4"
                   />
                 </div>
 
                 {/* Content */}
-                <div className="p-5 flex flex-col flex-grow">
+                <div className="p-4 sm:p-5 flex flex-col flex-grow">
                   {/* Icon + Title Row */}
                   <div className="flex items-start gap-3 mb-3">
                     <div className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
@@ -1120,7 +1101,7 @@ const Portfolio = () => {
                       <Award size={16} className="text-emerald-500" />
                     </div>
                     <div>
-                      <h3 className={`font-bold font-industry leading-tight ${
+                      <h3 className={`font-bold font-industry leading-tight text-sm sm:text-base ${
                         darkMode ? "text-white" : "text-slate-900"
                       }`}>
                         Claude Code: Software Engineering with AI Agents
@@ -1170,22 +1151,22 @@ const Portfolio = () => {
 
             {/* Google Certificate */}
             <RevealOnScroll delay={400} animation="fadeUp">
-              <div className={`group h-full rounded-xl border transition-all duration-300 hover:border-emerald-500/50 flex flex-col ${
+              <div className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
                 darkMode
-                  ? "bg-zinc-950 border-zinc-800"
-                  : "bg-white border-slate-200 hover:border-emerald-400"
+                  ? "bg-zinc-950 border-zinc-800 hover:border-emerald-500/50"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
               }`}>
                 {/* Certificate Image */}
                 <div className={`aspect-[4/3] overflow-hidden rounded-t-xl ${darkMode ? "bg-black" : "bg-slate-50"}`}>
                   <img
                     src="/AIprompt.jpg"
                     alt="Google Prompting Essentials Certificate"
-                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-full object-contain p-4"
                   />
                 </div>
 
                 {/* Content */}
-                <div className="p-5 flex flex-col flex-grow">
+                <div className="p-4 sm:p-5 flex flex-col flex-grow">
                   {/* Icon + Title Row */}
                   <div className="flex items-start gap-3 mb-3">
                     <div className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
@@ -1194,7 +1175,7 @@ const Portfolio = () => {
                       <Award size={16} className="text-emerald-500" />
                     </div>
                     <div>
-                      <h3 className={`font-bold font-industry leading-tight ${
+                      <h3 className={`font-bold font-industry leading-tight text-sm sm:text-base ${
                         darkMode ? "text-white" : "text-slate-900"
                       }`}>
                         Design Prompts for Everyday Work Tasks
@@ -1404,7 +1385,7 @@ const Portfolio = () => {
                 <button
                   type="submit"
                   disabled={formStatus === "sending"}
-                  className={`w-full py-4 rounded-xl font-bold text-lg hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg font-industry ${
+                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all shadow-lg font-industry ${
                     darkMode
                       ? "bg-white text-black hover:bg-zinc-200 disabled:opacity-50"
                       : "bg-gradient-to-r from-green-700 to-emerald-500 text-white shadow-emerald-500/30 disabled:opacity-50"
@@ -1451,7 +1432,7 @@ const Portfolio = () => {
               href="https://github.com/ImFrankB"
               target="_blank"
               rel="noopener noreferrer"
-              className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 ${
+              className={`p-3 rounded-full transition-all duration-300 ${
                 darkMode 
                   ? "bg-zinc-900 text-zinc-400 hover:bg-emerald-500 hover:text-white" 
                   : "bg-slate-100 text-slate-600 hover:bg-emerald-500 hover:text-white"
@@ -1495,7 +1476,7 @@ const SocialLink = ({ href, icon, darkMode }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 hover:scale-110 ${
+    className={`p-3 rounded-full transition-all duration-300 ${
       darkMode
         ? "bg-zinc-900 text-zinc-400 hover:bg-emerald-500 hover:text-white"
         : "bg-white shadow-md text-slate-600 hover:bg-emerald-500 hover:text-white"
@@ -1533,8 +1514,8 @@ const InfoItem = ({ icon, label, value, subValue, darkMode }) => (
   <div
     className={`flex items-center space-x-4 p-4 rounded-2xl transition-all duration-300 ${
       darkMode
-        ? "bg-zinc-900/50 border border-zinc-800/50 hover:bg-zinc-900 hover:border-zinc-700"
-        : "bg-white border border-slate-100 hover:shadow-lg hover:-translate-y-1"
+        ? "bg-zinc-900/50 border border-zinc-800/50 hover:bg-zinc-900 hover:border-emerald-500/50"
+        : "bg-white border border-slate-100 hover:border-emerald-500"
     }`}
   >
     <div
@@ -1567,13 +1548,13 @@ const InfoItem = ({ icon, label, value, subValue, darkMode }) => (
 
 const SkillCard = ({ title, icon, skills, darkMode }) => (
   <div
-    className={`h-full p-8 rounded-[2rem] border transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group ${
+    className={`h-full p-6 sm:p-8 rounded-[2rem] border transition-all duration-300 group ${
       darkMode
-        ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
-        : "bg-white border-slate-200 hover:border-slate-300"
+        ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+        : "bg-white border-slate-200 hover:border-emerald-500"
     }`}
   >
-    <div className="mb-8 p-4 bg-zinc-100/5 rounded-2xl inline-block md:block md:w-fit group-hover:scale-110 transition-transform duration-300">
+    <div className="mb-8 p-4 bg-zinc-100/5 rounded-2xl inline-block md:block md:w-fit">
       {icon}
     </div>
     <h4 className="text-2xl font-bold mb-6 font-industry">{title}</h4>
@@ -1623,10 +1604,10 @@ const TimelineItem = ({
     </div>
     {/* Content */}
     <div
-      className={`w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-8 rounded-3xl border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 md:group-odd:mr-auto md:group-even:ml-auto ${
+      className={`w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] p-6 sm:p-8 rounded-3xl border transition-all duration-300 md:group-odd:mr-auto md:group-even:ml-auto ${
         darkMode
-          ? "bg-zinc-900 border-zinc-800 hover:border-zinc-700"
-          : "bg-white border-slate-200 hover:border-slate-300"
+          ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+          : "bg-white border-slate-200 hover:border-emerald-500"
       }`}
     >
       <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-2">
