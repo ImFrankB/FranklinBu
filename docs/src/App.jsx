@@ -321,7 +321,10 @@ const Portfolio = () => {
                 darkMode ? "text-zinc-500" : "text-slate-500"
               }`}
             >
-              I don't just write code—I architect solutions. As an AI-augmented developer, I design scalable systems and let AI handle the heavy lifting, turning complex backends into clean, intuitive interfaces that people actually enjoy.
+              I don't just write code—I architect solutions. As an AI-augmented
+              developer, I design scalable systems and let AI handle the heavy
+              lifting, turning complex backends into clean, intuitive interfaces
+              that people actually enjoy.
             </p>
           </div>
 
@@ -467,14 +470,18 @@ const Portfolio = () => {
                 >
                   Computer Science Student at Isabela State University.
                 </span>{" "}
-                I'm an AI-augmented developer who architects solutions rather than just writing code. I design scalable systems and leverage AI tools to handle the heavy lifting, transforming complex backends into clean, intuitive interfaces.
+                I'm an AI-augmented developer who architects solutions rather
+                than just writing code. I design scalable systems and leverage
+                AI tools to handle the heavy lifting, transforming complex
+                backends into clean, intuitive interfaces.
               </p>
               <p
                 className={`text-base leading-7 ${
                   darkMode ? "text-zinc-300" : "text-slate-600"
                 }`}
               >
-                My approach combines strategic system design with AI-powered development.{" "}
+                My approach combines strategic system design with AI-powered
+                development.{" "}
                 <span className="text-emerald-400">
                   I believe great technology should be both powerful and simple.
                 </span>
