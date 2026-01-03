@@ -22,79 +22,9 @@ import {
   Calendar,
   Shield,
 } from "lucide-react";
-import profileImg from "/GraduationPic.jpg";
+import profileImg from "/Me.png";
 import campusTraceImg from "/CampusTraceImage.png";
 import huaweiCertImg from "/Certificate.png";
-
-// --- Custom Hook for Scroll Animations ---
-const useElementOnScreen = (options) => {
-  const containerRef = useRef(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const [entry] = entries;
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        // Optional: Stop observing once visible to prevent re-triggering
-        if (containerRef.current) observer.unobserve(containerRef.current);
-      }
-    }, options);
-
-    if (containerRef.current) observer.observe(containerRef.current);
-
-    return () => {
-      if (containerRef.current) observer.unobserve(containerRef.current);
-    };
-  }, [containerRef, options]);
-
-  return [containerRef, isVisible];
-};
-
-// --- Wrapper Component for Reveal Animations ---
-const RevealOnScroll = ({
-  children,
-  delay = 0,
-  className = "",
-  animation = "fadeUp",
-}) => {
-  const [ref, isVisible] = useElementOnScreen({
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.1,
-  });
-
-  const animations = {
-    fadeUp: isVisible
-      ? "opacity-100 translate-y-0 scale-100"
-      : "opacity-0 translate-y-16 scale-95",
-    fadeLeft: isVisible
-      ? "opacity-100 translate-x-0 scale-100"
-      : "opacity-0 -translate-x-16 scale-95",
-    fadeRight: isVisible
-      ? "opacity-100 translate-x-0 scale-100"
-      : "opacity-0 translate-x-16 scale-95",
-    scaleIn: isVisible
-      ? "opacity-100 scale-100 rotate-0"
-      : "opacity-0 scale-75 rotate-3",
-    bounceIn: isVisible
-      ? "opacity-100 translate-y-0 scale-100"
-      : "opacity-0 translate-y-20 scale-50",
-  };
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        transitionDelay: `${delay}ms`,
-        transitionTimingFunction: "cubic-bezier(0.34, 1.56, 0.64, 1)",
-      }}
-      className={`transition-all duration-700 ${animations[animation]} ${className}`}
-    >
-      {children}
-    </div>
-  );
-};
 
 const Portfolio = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -340,7 +270,7 @@ const Portfolio = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <RevealOnScroll>
+          <div>
             <div
               className={`inline-flex items-center px-4 py-2 rounded-full border text-sm font-medium mb-8 transition-colors duration-300 cursor-default ${
                 darkMode
@@ -354,9 +284,9 @@ const Portfolio = () => {
               </span>
               Open for Commission
             </div>
-          </RevealOnScroll>
+          </div>
 
-          <RevealOnScroll delay={200}>
+          <div>
             <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight mb-6 md:mb-8 font-industry leading-[1.1] px-4">
               I'm{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-700 via-emerald-500 to-lime-500 animate-gradient-x">
@@ -366,9 +296,9 @@ const Portfolio = () => {
                 .
               </span>
             </h1>
-          </RevealOnScroll>
+          </div>
 
-          <RevealOnScroll delay={400}>
+          <div>
             <p
               className={`mt-4 max-w-2xl mx-auto text-lg sm:text-xl md:text-2xl font-light px-4 ${
                 darkMode ? "text-zinc-400" : "text-slate-600"
@@ -383,22 +313,22 @@ const Portfolio = () => {
                 Student Software Engineer | Aspiring Software Architect
               </span>
             </p>
-          </RevealOnScroll>
+          </div>
 
-          <RevealOnScroll delay={600}>
+          <div>
             <p
               className={`mt-6 max-w-3xl mx-auto text-lg leading-relaxed ${
                 darkMode ? "text-zinc-500" : "text-slate-500"
               }`}
             >
               "I don't just write code—I architect solutions and let AI handle
-              the heavy lifting. My role is the brain behind the system: designing
-              scalable backends, mapping out architectures, and guiding AI tools
-              to execute my vision with precision and speed."
+              the heavy lifting. My role is the brain behind the system:
+              designing scalable backends, mapping out architectures, and
+              guiding AI tools to execute my vision with precision and speed."
             </p>
-          </RevealOnScroll>
+          </div>
 
-          <RevealOnScroll delay={800}>
+          <div>
             <div className="mt-10 md:mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center px-4 w-full sm:w-auto">
               <a
                 href="#projects"
@@ -426,9 +356,9 @@ const Portfolio = () => {
                 <Send size={16} className="sm:w-[18px] sm:h-[18px]" />
               </a>
             </div>
-          </RevealOnScroll>
+          </div>
 
-          <RevealOnScroll delay={1000}>
+          <div>
             <div className="mt-16 flex justify-center gap-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
               <SocialLink
                 href="https://github.com/ImFrankB"
@@ -446,28 +376,22 @@ const Portfolio = () => {
                 darkMode={darkMode}
               />
             </div>
-          </RevealOnScroll>
+          </div>
         </div>
       </section>
 
       {/* About Section */}
       <section id="about" className="py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll>
-            <SectionHeading
-              title="About Me"
-              subtitle="Behind the code"
-              darkMode={darkMode}
-            />
-          </RevealOnScroll>
+          <SectionHeading
+            title="About Me"
+            subtitle="Behind the code"
+            darkMode={darkMode}
+          />
 
           <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Enhanced Image Card with 3D Tilt Feel */}
-            <RevealOnScroll
-              delay={200}
-              animation="fadeLeft"
-              className="flex justify-center"
-            >
+            <div className="flex justify-center">
               <div className="relative group max-w-md w-full">
                 <div
                   className={`relative rounded-[1.8rem] overflow-hidden aspect-[4/5] border-2 transition-transform duration-700 ${
@@ -489,66 +413,82 @@ const Portfolio = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </div>
               </div>
-            </RevealOnScroll>
+            </div>
 
             {/* Content */}
             <div className="space-y-8">
-              <RevealOnScroll delay={400} animation="fadeRight">
-                <h3 className="text-4xl font-bold font-industry leading-tight">
-                  Student Software Engineer{" "}
-                  <span className={darkMode ? "text-white" : "text-slate-900"}>
-                    at Isabela State University
-                  </span>
-                  .
+              <div>
+                <h3 className="text-4xl font-bold font-industry leading-tight mb-6">
+                  John Franklin Bugauisan
                 </h3>
-              </RevealOnScroll>
+                <div
+                  className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 ${
+                    darkMode
+                      ? "bg-purple-500/10 text-purple-400 border border-purple-500/20"
+                      : "bg-purple-50 text-purple-600 border border-purple-200"
+                  }`}
+                >
+                  <Sparkles size={16} className="mr-2" />
+                  AI-Augmented Developer
+                </div>
+              </div>
 
-              <RevealOnScroll delay={600}>
+              <div>
                 <p
                   className={`text-lg leading-8 font-light ${
                     darkMode ? "text-zinc-300" : "text-slate-600"
                   }`}
                 >
+                  <span
+                    className={`font-bold ${
+                      darkMode ? "text-white" : "text-slate-900"
+                    }`}
+                  >
+                    Computer Science Student at Isabela State University.
+                  </span>{" "}
                   I'm a web developer exploring machine learning and AI. I use
                   AI tools to enhance my work—turning complex backend systems
                   into clean, easy-to-use interfaces that people actually enjoy.
+                </p>
+                <p
+                  className={`text-lg leading-8 font-light mt-4 ${
+                    darkMode ? "text-zinc-300" : "text-slate-600"
+                  }`}
+                >
                   Rather than just building websites, I create smart digital
                   solutions that solve real problems. I believe great technology
                   should be both powerful and simple.
                 </p>
-              </RevealOnScroll>
+              </div>
 
-
-
-              <RevealOnScroll delay={800}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <InfoItem
-                    icon={<MapPin size={18} />}
-                    label="Location"
-                    value="Isabela, Philippines"
-                    darkMode={darkMode}
-                  />
-                  <InfoItem
-                    icon={<Mail size={18} />}
-                    label="Email"
-                    value="johnfranklinbugauisan0"
-                    subValue="@gmail.com"
-                    darkMode={darkMode}
-                  />
-                  <InfoItem
-                    icon={<GraduationCap size={18} />}
-                    label="Degree"
-                    value="BS Computer Science"
-                    darkMode={darkMode}
-                  />
-                  <InfoItem
-                    icon={<Code2 size={18} />}
-                    label="Focus"
-                    value="Web/App Dev, ML, AI"
-                    darkMode={darkMode}
-                  />
+              <div>
+                <div className="flex flex-wrap gap-3 pt-4">
+                  {[
+                    { name: "Next.js", variant: "default" },
+                    { name: "React", variant: "default" },
+                    { name: "TypeScript", variant: "default" },
+                    { name: "Python", variant: "default" },
+                    { name: "FastAPI", variant: "default" },
+                    { name: "AI", variant: "default" },
+                    { name: "AI-Augmented", variant: "special" },
+                  ].map((tech) => (
+                    <span
+                      key={tech.name}
+                      className={`px-4 py-2 rounded-full text-sm font-medium ${
+                        tech.variant === "special"
+                          ? darkMode
+                            ? "bg-purple-500/10 text-purple-400 border border-purple-500/20"
+                            : "bg-purple-50 text-purple-600 border border-purple-200"
+                          : darkMode
+                          ? "bg-zinc-800 text-zinc-300 border border-zinc-700"
+                          : "bg-slate-100 text-slate-700 border border-slate-200"
+                      }`}
+                    >
+                      {tech.name}
+                    </span>
+                  ))}
                 </div>
-              </RevealOnScroll>
+              </div>
             </div>
           </div>
         </div>
@@ -562,24 +502,17 @@ const Portfolio = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll>
-            <SectionHeading
-              title="Technical Arsenal"
-              subtitle="My stack"
-              darkMode={darkMode}
-            />
-          </RevealOnScroll>
+          <SectionHeading
+            title="Technical Arsenal"
+            subtitle="My stack"
+            darkMode={darkMode}
+          />
 
           <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-4">
-            <RevealOnScroll delay={200} animation="bounceIn" className="h-full">
+            <div className="h-full">
               <SkillCard
                 title="Frontend"
-                icon={
-                  <Code2
-                    className="text-emerald-500"
-                    size={40}
-                  />
-                }
+                icon={<Code2 className="text-emerald-500" size={40} />}
                 skills={[
                   "React.js",
                   "Tailwind CSS",
@@ -589,16 +522,11 @@ const Portfolio = () => {
                 ]}
                 darkMode={darkMode}
               />
-            </RevealOnScroll>
-            <RevealOnScroll delay={400} animation="bounceIn" className="h-full">
+            </div>
+            <div className="h-full">
               <SkillCard
                 title="Backend & Systems"
-                icon={
-                  <Terminal
-                    className="text-emerald-500"
-                    size={40}
-                  />
-                }
+                icon={<Terminal className="text-emerald-500" size={40} />}
                 skills={[
                   "Node.js",
                   "Python",
@@ -609,16 +537,11 @@ const Portfolio = () => {
                 ]}
                 darkMode={darkMode}
               />
-            </RevealOnScroll>
-            <RevealOnScroll delay={600} animation="bounceIn" className="h-full">
+            </div>
+            <div className="h-full">
               <SkillCard
                 title="Tools & Workflow"
-                icon={
-                  <Database
-                    className="text-emerald-500"
-                    size={40}
-                  />
-                }
+                icon={<Database className="text-emerald-500" size={40} />}
                 skills={[
                   "Git & GitHub",
                   "VS Code",
@@ -629,7 +552,7 @@ const Portfolio = () => {
                 ]}
                 darkMode={darkMode}
               />
-            </RevealOnScroll>
+            </div>
           </div>
         </div>
       </section>
@@ -637,79 +560,271 @@ const Portfolio = () => {
       {/* Projects Section */}
       <section id="projects" className="py-32 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll>
-            <SectionHeading
-              title="Featured Work"
-              subtitle="Recent Projects"
-              darkMode={darkMode}
-            />
-          </RevealOnScroll>
+          <SectionHeading
+            title="Featured Work"
+            subtitle="Recent Projects"
+            darkMode={darkMode}
+          />
 
           <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 px-4">
-            {/* Project Card: CampusTrace */}
-            <RevealOnScroll delay={200} animation="scaleIn">
+            {/* Project Card: LearnSteps */}
+            <div
+              className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 ${
+                darkMode
+                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
+              }`}
+            >
+              {/* Enhanced Image Area */}
               <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 ${
-                  darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
-                    : "bg-white border-slate-200 hover:border-emerald-500"
+                className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${
+                  darkMode ? "bg-zinc-900" : "bg-slate-100"
                 }`}
               >
-                {/* Enhanced Image Area */}
-                <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
-                  {/* Interactive Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+                {/* Interactive Hover Overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
 
-                  <img
-                    src={campusTraceImg}
-                    alt="CampusTrace Project"
-                    className="w-full h-full object-contain drop-shadow-xl"
-                  />
+                <img
+                  src="Learnsteps.png"
+                  alt="LearnSteps Project"
+                  className="w-full h-full object-contain drop-shadow-xl"
+                />
 
-                  {/* Floating Link Button */}
-                  <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
-                    <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
-                      Visit Application <ArrowUpRight size={16} />
-                    </span>
-                  </div>
+                {/* Floating Link Button */}
+                <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                  <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                    Visit Platform <ArrowUpRight size={16} />
+                  </span>
                 </div>
+              </div>
 
-                <div className="p-6 sm:p-8">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className={`text-2xl font-bold tracking-tight font-industry transition-colors ${darkMode ? "group-hover:text-zinc-300" : "group-hover:text-slate-600"}`}>
-                      CampusTrace
-                    </h3>
-                    <span
-                      className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                        darkMode
-                          ? "bg-zinc-950 border-zinc-800 text-zinc-400"
-                          : "bg-slate-100 border-slate-200 text-slate-600"
-                      }`}
-                    >
-                      2025
-                    </span>
-                  </div>
-
-                  <p
-                    className={`mb-6 text-base leading-relaxed ${
-                      darkMode ? "text-zinc-400" : "text-slate-600"
+              <div className="p-6 sm:p-8">
+                <div className="flex justify-between items-start mb-4">
+                  <h3
+                    className={`text-2xl font-bold tracking-tight font-industry transition-colors ${
+                      darkMode
+                        ? "group-hover:text-zinc-300"
+                        : "group-hover:text-slate-600"
                     }`}
                   >
-                    A cross-platform solution designed to revolutionize the lost
-                    and found process for university campuses. Leveraging
-                    advanced AI for image recognition to help students recover
-                    items seamlessly.
-                  </p>
+                    LearnSteps
+                  </h3>
+                  <span
+                    className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                      darkMode
+                        ? "bg-zinc-950 border-zinc-800 text-zinc-400"
+                        : "bg-slate-100 border-slate-200 text-slate-600"
+                    }`}
+                  >
+                    2025
+                  </span>
+                </div>
 
+                <p
+                  className={`mb-6 text-base leading-relaxed ${
+                    darkMode ? "text-zinc-400" : "text-slate-600"
+                  }`}
+                >
+                  AI-powered learning platform that generates personalized
+                  step-by-step roadmaps for mastering any skill. Features
+                  curated resources, progress tracking, and structured learning
+                  paths to help users save 100+ hours of research time.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["React.js", "AI/ML", "Tailwind CSS", "API Integration"].map(
+                    (tag) => (
+                      <span
+                        key={tag}
+                        className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                          darkMode
+                            ? "bg-zinc-800 text-zinc-300"
+                            : "bg-slate-100 text-slate-700"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    )
+                  )}
+                </div>
+
+                <a
+                  href="https://learnsteps.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all ${
+                    darkMode
+                      ? "bg-white text-black hover:bg-zinc-200"
+                      : "bg-emerald-600 text-white hover:bg-emerald-700"
+                  }`}
+                >
+                  Visit Platform <ExternalLink size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* Project Card: CampusTrace */}
+            <div
+              className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 ${
+                darkMode
+                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
+              }`}
+            >
+              {/* Enhanced Image Area */}
+              <div
+                className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${
+                  darkMode ? "bg-zinc-900" : "bg-slate-100"
+                }`}
+              >
+                {/* Interactive Hover Overlay */}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+
+                <img
+                  src={campusTraceImg}
+                  alt="CampusTrace Project"
+                  className="w-full h-full object-contain drop-shadow-xl"
+                />
+
+                {/* Floating Link Button */}
+                <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                  <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                    Visit Application <ArrowUpRight size={16} />
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-6 sm:p-8">
+                <div className="flex justify-between items-start mb-4">
+                  <h3
+                    className={`text-2xl font-bold tracking-tight font-industry transition-colors ${
+                      darkMode
+                        ? "group-hover:text-zinc-300"
+                        : "group-hover:text-slate-600"
+                    }`}
+                  >
+                    CampusTrace
+                  </h3>
+                  <span
+                    className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                      darkMode
+                        ? "bg-zinc-950 border-zinc-800 text-zinc-400"
+                        : "bg-slate-100 border-slate-200 text-slate-600"
+                    }`}
+                  >
+                    2025
+                  </span>
+                </div>
+
+                <p
+                  className={`mb-6 text-base leading-relaxed ${
+                    darkMode ? "text-zinc-400" : "text-slate-600"
+                  }`}
+                >
+                  A cross-platform solution designed to revolutionize the lost
+                  and found process for university campuses. Leveraging advanced
+                  AI for image recognition to help students recover items
+                  seamlessly.
+                </p>
+
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {["React native/JS", "Python", "Supabase", "AI/ML"].map(
+                    (tag) => (
+                      <span
+                        key={tag}
+                        className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                          darkMode
+                            ? "bg-zinc-800 text-zinc-300"
+                            : "bg-slate-100 text-slate-700"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    )
+                  )}
+                </div>
+
+                <a
+                  href="https://campustrace.site"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all ${
+                    darkMode
+                      ? "bg-white text-black hover:bg-zinc-200"
+                      : "bg-emerald-600 text-white hover:bg-emerald-700"
+                  }`}
+                >
+                  Visit Application <ExternalLink size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* Project 2: Odizee School Of Achievers Website */}
+            <div
+              className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
+                darkMode
+                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
+              }`}
+            >
+              <div
+                className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${
+                  darkMode ? "bg-zinc-900" : "bg-slate-100"
+                }`}
+              >
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+                <img
+                  src="OSAwebsite.png"
+                  alt="Odizee School Of Achievers Website"
+                  className="w-full h-full object-contain drop-shadow-xl"
+                />
+                <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                  <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                    Visit Website <ExternalLink size={16} />
+                  </span>
+                </div>
+              </div>
+
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-4">
+                  <h3
+                    className={`text-2xl font-bold tracking-tight font-industry transition-colors ${
+                      darkMode
+                        ? "group-hover:text-zinc-300"
+                        : "group-hover:text-slate-600"
+                    }`}
+                  >
+                    Odizee School Of Achievers, Inc. Official Website
+                  </h3>
+                  <span
+                    className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                      darkMode
+                        ? "bg-zinc-950 border-zinc-800 text-zinc-400"
+                        : "bg-slate-100 border-slate-200 text-slate-600"
+                    }`}
+                  >
+                    2025
+                  </span>
+                </div>
+                <p
+                  className={`mb-6 text-base leading-relaxed ${
+                    darkMode ? "text-zinc-400" : "text-slate-600"
+                  }`}
+                >
+                  Official website for Odizee School Of Achievers featuring a
+                  complete Content Management System (CMS) for easy content
+                  updates, announcements, and school information management.
+                </p>
+                <div className="mt-auto">
                   <div className="flex flex-wrap gap-2 mb-6">
-                    {["React native/JS", "Python", "Supabase", "AI/ML"].map(
+                    {["React.js", "Tailwind CSS", "CMS", "Responsive"].map(
                       (tag) => (
                         <span
                           key={tag}
                           className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
                             darkMode
                               ? "bg-zinc-800 text-zinc-300"
-                            : "bg-slate-100 text-slate-700"
+                              : "bg-slate-100 text-slate-700"
                           }`}
                         >
                           {tag}
@@ -717,270 +832,282 @@ const Portfolio = () => {
                       )
                     )}
                   </div>
-
                   <a
-                    href="https://campustrace.site"
+                    href="https://odizeeschoolofachievers.site"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all ${
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
                       darkMode
                         ? "bg-white text-black hover:bg-zinc-200"
                         : "bg-emerald-600 text-white hover:bg-emerald-700"
                     }`}
                   >
-                    Visit Application <ExternalLink size={16} />
+                    Visit Website <ExternalLink size={16} />
                   </a>
                 </div>
               </div>
-            </RevealOnScroll>
-
-            {/* Project 2: Odizee School Of Achievers Website */}
-            <RevealOnScroll delay={400} animation="fadeUp">
-              <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
-                  darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
-                    : "bg-white border-slate-200 hover:border-emerald-500"
-                }`}
-              >
-                <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
-                  <img
-                    src="OSAwebsite.png"
-                    alt="Odizee School Of Achievers Website"
-                    className="w-full h-full object-contain drop-shadow-xl"
-                  />
-                  <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
-                    <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
-                      Visit Website <ExternalLink size={16} />
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className={`text-2xl font-bold tracking-tight font-industry transition-colors ${darkMode ? "group-hover:text-zinc-300" : "group-hover:text-slate-600"}`}>
-                      Odizee School Of Achievers, Inc. Official Website
-                    </h3>
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                        darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-400" : "bg-slate-100 border-slate-200 text-slate-600"
-                      }`}>
-                      2025
-                    </span>
-                  </div>
-                  <p className={`mb-6 text-base leading-relaxed ${darkMode ? "text-zinc-400" : "text-slate-600"}`}>
-                    Official website for Odizee School Of Achievers featuring a complete Content Management System (CMS) for easy content updates, announcements, and school information management.
-                  </p>
-                  <div className="mt-auto">
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {["React.js", "Tailwind CSS", "CMS", "Responsive"].map((tag) => (
-                        <span key={tag} className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
-                            darkMode ? "bg-zinc-800 text-zinc-300" : "bg-slate-100 text-slate-700"
-                          }`}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <a
-                      href="https://odizeeschoolofachievers.site"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
-                        darkMode ? "bg-white text-black hover:bg-zinc-200" : "bg-emerald-600 text-white hover:bg-emerald-700"
-                      }`}
-                    >
-                      Visit Website <ExternalLink size={16} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </RevealOnScroll>
+            </div>
 
             {/* Project 3: Car Dealership System */}
-            <RevealOnScroll delay={400} animation="fadeUp">
+            <div
+              className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
+                darkMode
+                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
+              }`}
+            >
               <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
-                  darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
-                    : "bg-white border-slate-200 hover:border-emerald-500"
+                className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${
+                  darkMode ? "bg-zinc-900" : "bg-slate-100"
                 }`}
               >
-                <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
-                  <img
-                    src="Cardealership.jpg"
-                    alt="Car Dealership System"
-                    className="w-full h-full object-contain drop-shadow-xl"
-                  />
-                  <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
-                    <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
-                      View Code <Github size={16} />
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className={`text-2xl font-bold tracking-tight font-industry transition-colors ${darkMode ? "group-hover:text-zinc-300" : "group-hover:text-slate-600"}`}>
-                      Car Dealership System
-                    </h3>
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                        darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-400" : "bg-slate-100 border-slate-200 text-slate-600"
-                      }`}>
-                      2024
-                    </span>
-                  </div>
-                  <p className={`mb-6 text-base leading-relaxed ${darkMode ? "text-zinc-400" : "text-slate-600"}`}>
-                    A desktop application with a GUI and database connection. Handles full CRUD operations for vehicle management and sales recording using Java Swing and MySQL.
-                  </p>
-                  <div className="mt-auto">
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {["Java Swing", "MySQL", "JDBC", "OOP"].map((tag) => (
-                        <span key={tag} className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
-                            darkMode ? "bg-zinc-800 text-zinc-300" : "bg-emerald-50 text-emerald-600"
-                          }`}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <a
-                      href="https://github.com/imfrankb/franklinbu-basic-system-projects"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
-                        darkMode ? "bg-white text-black hover:bg-zinc-200" : "bg-emerald-600 text-white hover:bg-emerald-700"
-                      }`}
-                    >
-                      View Repository <Github size={16} />
-                    </a>
-                  </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+                <img
+                  src="Cardealership.jpg"
+                  alt="Car Dealership System"
+                  className="w-full h-full object-contain drop-shadow-xl"
+                />
+                <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                  <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                    View Code <Github size={16} />
+                  </span>
                 </div>
               </div>
-            </RevealOnScroll>
+
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-4">
+                  <h3
+                    className={`text-2xl font-bold tracking-tight font-industry transition-colors ${
+                      darkMode
+                        ? "group-hover:text-zinc-300"
+                        : "group-hover:text-slate-600"
+                    }`}
+                  >
+                    Car Dealership System
+                  </h3>
+                  <span
+                    className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                      darkMode
+                        ? "bg-zinc-950 border-zinc-800 text-zinc-400"
+                        : "bg-slate-100 border-slate-200 text-slate-600"
+                    }`}
+                  >
+                    2024
+                  </span>
+                </div>
+                <p
+                  className={`mb-6 text-base leading-relaxed ${
+                    darkMode ? "text-zinc-400" : "text-slate-600"
+                  }`}
+                >
+                  A desktop application with a GUI and database connection.
+                  Handles full CRUD operations for vehicle management and sales
+                  recording using Java Swing and MySQL.
+                </p>
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {["Java Swing", "MySQL", "JDBC", "OOP"].map((tag) => (
+                      <span
+                        key={tag}
+                        className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                          darkMode
+                            ? "bg-zinc-800 text-zinc-300"
+                            : "bg-emerald-50 text-emerald-600"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href="https://github.com/imfrankb/franklinbu-basic-system-projects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                      darkMode
+                        ? "bg-white text-black hover:bg-zinc-200"
+                        : "bg-emerald-600 text-white hover:bg-emerald-700"
+                    }`}
+                  >
+                    View Repository <Github size={16} />
+                  </a>
+                </div>
+              </div>
+            </div>
 
             {/* Project 3: Personal Development Tracker */}
-            <RevealOnScroll delay={200} animation="fadeUp">
+            <div
+              className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
+                darkMode
+                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
+              }`}
+            >
               <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
-                  darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
-                    : "bg-white border-slate-200 hover:border-emerald-500"
+                className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${
+                  darkMode ? "bg-zinc-900" : "bg-slate-100"
                 }`}
               >
-                <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
-                  <img
-                    src="personalDev.jpg"
-                    alt="Personal Development Tracker"
-                    className="w-full h-full object-contain drop-shadow-xl"
-                  />
-                  <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
-                    <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
-                      View Code <Github size={16} />
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className={`text-2xl font-bold tracking-tight font-industry transition-colors ${darkMode ? "group-hover:text-zinc-300" : "group-hover:text-slate-600"}`}>
-                      Personal Dev Tracker
-                    </h3>
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                        darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-400" : "bg-slate-100 border-slate-200 text-slate-600"
-                      }`}>
-                      2023
-                    </span>
-                  </div>
-                  <p className={`mb-6 text-base leading-relaxed ${darkMode ? "text-zinc-400" : "text-slate-600"}`}>
-                    A CLI application that uses structs and vectors to manage user goals and habits. Features custom loading animations and color-coded console output for a better UX.
-                  </p>
-                  <div className="mt-auto">
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {["C++", "Vectors", "Structs", "CLI UI"].map((tag) => (
-                        <span key={tag} className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
-                            darkMode ? "bg-zinc-800 text-zinc-300" : "bg-emerald-50 text-emerald-600"
-                          }`}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <a
-                      href="https://github.com/imfrankb/franklinbu-basic-system-projects"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
-                        darkMode ? "bg-white text-black hover:bg-zinc-200" : "bg-emerald-600 text-white hover:bg-emerald-700"
-                      }`}
-                    >
-                      View Repository <Github size={16} />
-                    </a>
-                  </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+                <img
+                  src="personalDev.jpg"
+                  alt="Personal Development Tracker"
+                  className="w-full h-full object-contain drop-shadow-xl"
+                />
+                <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                  <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                    View Code <Github size={16} />
+                  </span>
                 </div>
               </div>
-            </RevealOnScroll>
+
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-4">
+                  <h3
+                    className={`text-2xl font-bold tracking-tight font-industry transition-colors ${
+                      darkMode
+                        ? "group-hover:text-zinc-300"
+                        : "group-hover:text-slate-600"
+                    }`}
+                  >
+                    Personal Dev Tracker
+                  </h3>
+                  <span
+                    className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                      darkMode
+                        ? "bg-zinc-950 border-zinc-800 text-zinc-400"
+                        : "bg-slate-100 border-slate-200 text-slate-600"
+                    }`}
+                  >
+                    2023
+                  </span>
+                </div>
+                <p
+                  className={`mb-6 text-base leading-relaxed ${
+                    darkMode ? "text-zinc-400" : "text-slate-600"
+                  }`}
+                >
+                  A CLI application that uses structs and vectors to manage user
+                  goals and habits. Features custom loading animations and
+                  color-coded console output for a better UX.
+                </p>
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {["C++", "Vectors", "Structs", "CLI UI"].map((tag) => (
+                      <span
+                        key={tag}
+                        className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                          darkMode
+                            ? "bg-zinc-800 text-zinc-300"
+                            : "bg-emerald-50 text-emerald-600"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href="https://github.com/imfrankb/franklinbu-basic-system-projects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                      darkMode
+                        ? "bg-white text-black hover:bg-zinc-200"
+                        : "bg-emerald-600 text-white hover:bg-emerald-700"
+                    }`}
+                  >
+                    View Repository <Github size={16} />
+                  </a>
+                </div>
+              </div>
+            </div>
 
             {/* Project 4: Enrollment System */}
-            <RevealOnScroll delay={400} animation="fadeUp">
+            <div
+              className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
+                darkMode
+                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
+              }`}
+            >
               <div
-                className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
-                  darkMode
-                    ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
-                    : "bg-white border-slate-200 hover:border-emerald-500"
+                className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${
+                  darkMode ? "bg-zinc-900" : "bg-slate-100"
                 }`}
               >
-                <div className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${darkMode ? "bg-zinc-900" : "bg-slate-100"}`}>
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
-                  <img
-                    src="enrollmentSystem.png"
-                    alt="Enrollment System"
-                    className="w-full h-full object-contain drop-shadow-xl"
-                  />
-                  <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
-                    <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
-                      View Code <Github size={16} />
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-8 flex flex-col flex-grow">
-                  <div className="flex justify-between items-start mb-4">
-                    <h3 className={`text-2xl font-bold tracking-tight font-industry transition-colors ${darkMode ? "group-hover:text-zinc-300" : "group-hover:text-slate-600"}`}>
-                      University Enrollment
-                    </h3>
-                    <span className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                        darkMode ? "bg-zinc-950 border-zinc-800 text-zinc-400" : "bg-slate-100 border-slate-200 text-slate-600"
-                      }`}>
-                      2023
-                    </span>
-                  </div>
-                  <p className={`mb-6 text-base leading-relaxed ${darkMode ? "text-zinc-400" : "text-slate-600"}`}>
-                    A logic-heavy console application that simulates university enrollment. Handles complex branching for different courses (BSCS, BSIS, BSIT) and prerequisites.
-                  </p>
-                  <div className="mt-auto">
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {["C++", "CLI UI"].map((tag) => (
-                        <span key={tag} className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
-                            darkMode ? "bg-zinc-800 text-zinc-300" : "bg-emerald-50 text-emerald-600"
-                          }`}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                    <a
-                      href="https://github.com/imfrankb/franklinbu-basic-system-projects"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
-                        darkMode ? "bg-white text-black hover:bg-zinc-200" : "bg-emerald-600 text-white hover:bg-emerald-700"
-                      }`}
-                    >
-                      View Repository <Github size={16} />
-                    </a>
-                  </div>
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
+                <img
+                  src="enrollmentSystem.png"
+                  alt="Enrollment System"
+                  className="w-full h-full object-contain drop-shadow-xl"
+                />
+                <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
+                  <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
+                    View Code <Github size={16} />
+                  </span>
                 </div>
               </div>
-            </RevealOnScroll>
+
+              <div className="p-8 flex flex-col flex-grow">
+                <div className="flex justify-between items-start mb-4">
+                  <h3
+                    className={`text-2xl font-bold tracking-tight font-industry transition-colors ${
+                      darkMode
+                        ? "group-hover:text-zinc-300"
+                        : "group-hover:text-slate-600"
+                    }`}
+                  >
+                    University Enrollment
+                  </h3>
+                  <span
+                    className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                      darkMode
+                        ? "bg-zinc-950 border-zinc-800 text-zinc-400"
+                        : "bg-slate-100 border-slate-200 text-slate-600"
+                    }`}
+                  >
+                    2023
+                  </span>
+                </div>
+                <p
+                  className={`mb-6 text-base leading-relaxed ${
+                    darkMode ? "text-zinc-400" : "text-slate-600"
+                  }`}
+                >
+                  A logic-heavy console application that simulates university
+                  enrollment. Handles complex branching for different courses
+                  (BSCS, BSIS, BSIT) and prerequisites.
+                </p>
+                <div className="mt-auto">
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {["C++", "CLI UI"].map((tag) => (
+                      <span
+                        key={tag}
+                        className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                          darkMode
+                            ? "bg-zinc-800 text-zinc-300"
+                            : "bg-emerald-50 text-emerald-600"
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href="https://github.com/imfrankb/franklinbu-basic-system-projects"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all transform hover:scale-105 active:scale-95 ${
+                      darkMode
+                        ? "bg-white text-black hover:bg-zinc-200"
+                        : "bg-emerald-600 text-white hover:bg-emerald-700"
+                    }`}
+                  >
+                    View Repository <Github size={16} />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -988,241 +1115,364 @@ const Portfolio = () => {
       {/* Certifications Section */}
       <section id="certifications" className="py-32 relative">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll>
-            <SectionHeading
-              title="Certifications"
-              subtitle="credentials"
-              center
-              darkMode={darkMode}
-            />
-          </RevealOnScroll>
+          <SectionHeading
+            title="Certifications"
+            subtitle="credentials"
+            center
+            darkMode={darkMode}
+          />
 
           {/* Minimalist 3-Column Grid */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
             {/* HUAWEI Certificate */}
-            <RevealOnScroll delay={200} animation="fadeUp">
-              <div className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
+            <div
+              className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
                 darkMode
                   ? "bg-zinc-950 border-zinc-800 hover:border-emerald-500/50"
                   : "bg-white border-slate-200 hover:border-emerald-500"
-              }`}>
-                {/* Certificate Image */}
-                <div className={`aspect-[4/3] overflow-hidden rounded-t-xl ${darkMode ? "bg-black" : "bg-slate-50"}`}>
-                  <img
-                    src={huaweiCertImg}
-                    alt="HUAWEI ICT Academy Certificate"
-                    className="w-full h-full object-contain p-4"
-                  />
-                </div>
+              }`}
+            >
+              {/* Certificate Image */}
+              <div
+                className={`aspect-[4/3] overflow-hidden rounded-t-xl ${
+                  darkMode ? "bg-black" : "bg-slate-50"
+                }`}
+              >
+                <img
+                  src={huaweiCertImg}
+                  alt="HUAWEI ICT Academy Certificate"
+                  className="w-full h-full object-contain p-4"
+                />
+              </div>
 
-                {/* Content */}
-                <div className="p-4 sm:p-5 flex flex-col flex-grow">
-                  {/* Icon + Title Row */}
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
-                      darkMode ? "border-emerald-500/30 bg-emerald-500/10" : "border-emerald-200 bg-emerald-50"
-                    }`}>
-                      <Award size={16} className="text-emerald-500" />
-                    </div>
-                    <div>
-                      <h3 className={`font-bold font-industry leading-tight text-sm sm:text-base ${
+              {/* Content */}
+              <div className="p-4 sm:p-5 flex flex-col flex-grow">
+                {/* Icon + Title Row */}
+                <div className="flex items-start gap-3 mb-3">
+                  <div
+                    className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
+                      darkMode
+                        ? "border-emerald-500/30 bg-emerald-500/10"
+                        : "border-emerald-200 bg-emerald-50"
+                    }`}
+                  >
+                    <Award size={16} className="text-emerald-500" />
+                  </div>
+                  <div>
+                    <h3
+                      className={`font-bold font-industry leading-tight text-sm sm:text-base ${
                         darkMode ? "text-white" : "text-slate-900"
-                      }`}>
-                        AI and Applications
-                      </h3>
-                      <p className={`text-xs mt-0.5 ${darkMode ? "text-zinc-500" : "text-slate-500"}`}>
-                        HUAWEI ICT Academy
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className={`text-sm leading-relaxed mb-4 ${
-                    darkMode ? "text-zinc-500" : "text-slate-500"
-                  }`}>
-                    Completed comprehensive training covering AI/ML fundamentals, deep learning algorithms, neural network architectures, and cloud-based AI deployment solutions through the HUAWEI ICT Academy program.
-                  </p>
-
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {["AI/ML", "Deep Learning", "Neural Networks", "Cloud AI", "Computer Vision", "NLP"].map((skill) => (
-                      <span key={skill} className={`text-xs px-2 py-1 rounded-md ${
-                        darkMode ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-emerald-50 text-emerald-700"
-                      }`}>
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Footer */}
-                  <div className={`flex items-center justify-between pt-3 mt-auto border-t ${darkMode ? "border-zinc-800" : "border-slate-100"}`}>
-                    <span className={`text-xs ${darkMode ? "text-zinc-600" : "text-slate-400"}`}>
-                      Dec 2025
-                    </span>
-                    <a
-                      href="https://e.huawei.com/en/talent"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`text-xs font-medium flex items-center gap-1 transition-colors ${
-                        darkMode ? "text-emerald-400 hover:text-emerald-300" : "text-emerald-600 hover:text-emerald-700"
                       }`}
                     >
-                      Verify <ExternalLink size={12} />
-                    </a>
+                      AI and Applications
+                    </h3>
+                    <p
+                      className={`text-xs mt-0.5 ${
+                        darkMode ? "text-zinc-500" : "text-slate-500"
+                      }`}
+                    >
+                      HUAWEI ICT Academy
+                    </p>
                   </div>
                 </div>
+
+                {/* Description */}
+                <p
+                  className={`text-sm leading-relaxed mb-4 ${
+                    darkMode ? "text-zinc-500" : "text-slate-500"
+                  }`}
+                >
+                  Completed comprehensive training covering AI/ML fundamentals,
+                  deep learning algorithms, neural network architectures, and
+                  cloud-based AI deployment solutions through the HUAWEI ICT
+                  Academy program.
+                </p>
+
+                {/* Skills */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {[
+                    "AI/ML",
+                    "Deep Learning",
+                    "Neural Networks",
+                    "Cloud AI",
+                    "Computer Vision",
+                    "NLP",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className={`text-xs px-2 py-1 rounded-md ${
+                        darkMode
+                          ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                          : "bg-emerald-50 text-emerald-700"
+                      }`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Footer */}
+                <div
+                  className={`flex items-center justify-between pt-3 mt-auto border-t ${
+                    darkMode ? "border-zinc-800" : "border-slate-100"
+                  }`}
+                >
+                  <span
+                    className={`text-xs ${
+                      darkMode ? "text-zinc-600" : "text-slate-400"
+                    }`}
+                  >
+                    Dec 2025
+                  </span>
+                  <a
+                    href="https://e.huawei.com/en/talent"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-xs font-medium flex items-center gap-1 transition-colors ${
+                      darkMode
+                        ? "text-emerald-400 hover:text-emerald-300"
+                        : "text-emerald-600 hover:text-emerald-700"
+                    }`}
+                  >
+                    Verify <ExternalLink size={12} />
+                  </a>
+                </div>
               </div>
-            </RevealOnScroll>
+            </div>
 
             {/* Vanderbilt Certificate */}
-            <RevealOnScroll delay={300} animation="fadeUp">
-              <div className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
+            <div
+              className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
                 darkMode
                   ? "bg-zinc-950 border-zinc-800 hover:border-emerald-500/50"
                   : "bg-white border-slate-200 hover:border-emerald-500"
-              }`}>
-                {/* Certificate Image */}
-                <div className={`aspect-[4/3] overflow-hidden rounded-t-xl ${darkMode ? "bg-black" : "bg-slate-50"}`}>
-                  <img
-                    src="/AIagent.jpg"
-                    alt="Claude Code Certificate"
-                    className="w-full h-full object-contain p-4"
-                  />
-                </div>
+              }`}
+            >
+              {/* Certificate Image */}
+              <div
+                className={`aspect-[4/3] overflow-hidden rounded-t-xl ${
+                  darkMode ? "bg-black" : "bg-slate-50"
+                }`}
+              >
+                <img
+                  src="/AIagent.jpg"
+                  alt="Claude Code Certificate"
+                  className="w-full h-full object-contain p-4"
+                />
+              </div>
 
-                {/* Content */}
-                <div className="p-4 sm:p-5 flex flex-col flex-grow">
-                  {/* Icon + Title Row */}
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
-                      darkMode ? "border-emerald-500/30 bg-emerald-500/10" : "border-emerald-200 bg-emerald-50"
-                    }`}>
-                      <Award size={16} className="text-emerald-500" />
-                    </div>
-                    <div>
-                      <h3 className={`font-bold font-industry leading-tight text-sm sm:text-base ${
+              {/* Content */}
+              <div className="p-4 sm:p-5 flex flex-col flex-grow">
+                {/* Icon + Title Row */}
+                <div className="flex items-start gap-3 mb-3">
+                  <div
+                    className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
+                      darkMode
+                        ? "border-emerald-500/30 bg-emerald-500/10"
+                        : "border-emerald-200 bg-emerald-50"
+                    }`}
+                  >
+                    <Award size={16} className="text-emerald-500" />
+                  </div>
+                  <div>
+                    <h3
+                      className={`font-bold font-industry leading-tight text-sm sm:text-base ${
                         darkMode ? "text-white" : "text-slate-900"
-                      }`}>
-                        Claude Code: Software Engineering with AI Agents
-                      </h3>
-                      <p className={`text-xs mt-0.5 ${darkMode ? "text-zinc-500" : "text-slate-500"}`}>
-                        Vanderbilt University
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className={`text-sm leading-relaxed mb-4 ${
-                    darkMode ? "text-zinc-500" : "text-slate-500"
-                  }`}>
-                    Completed Vanderbilt University's course on Coursera with a 100% grade, focusing on advanced prompt engineering to orchestrate Claude Code like a tech lead managing multiple senior developers. Gained hands-on experience using structured prompts to drive AI-powered software development, automate testing, and design AI-first architectures.
-                  </p>
-
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {["Prompt Engineering", "Generative AI", "Software Architecture", "Test Automation", "Software Design", "Git"].map((skill) => (
-                      <span key={skill} className={`text-xs px-2 py-1 rounded-md ${
-                        darkMode ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-emerald-50 text-emerald-700"
-                      }`}>
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className={`flex items-center justify-between pt-3 mt-auto border-t ${darkMode ? "border-zinc-800" : "border-slate-100"}`}>
-                    <span className={`text-xs ${darkMode ? "text-zinc-600" : "text-slate-400"}`}>
-                      Dec 2025
-                    </span>
-                    <a
-                      href="https://www.coursera.org/account/accomplishments/verify/ZL0NFKR2X6GA"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`text-xs font-medium flex items-center gap-1 transition-colors ${
-                        darkMode ? "text-emerald-400 hover:text-emerald-300" : "text-emerald-600 hover:text-emerald-700"
                       }`}
                     >
-                      Verify <ExternalLink size={12} />
-                    </a>
+                      Claude Code: Software Engineering with AI Agents
+                    </h3>
+                    <p
+                      className={`text-xs mt-0.5 ${
+                        darkMode ? "text-zinc-500" : "text-slate-500"
+                      }`}
+                    >
+                      Vanderbilt University
+                    </p>
                   </div>
                 </div>
+
+                {/* Description */}
+                <p
+                  className={`text-sm leading-relaxed mb-4 ${
+                    darkMode ? "text-zinc-500" : "text-slate-500"
+                  }`}
+                >
+                  Completed Vanderbilt University's course on Coursera with a
+                  100% grade, focusing on advanced prompt engineering to
+                  orchestrate Claude Code like a tech lead managing multiple
+                  senior developers. Gained hands-on experience using structured
+                  prompts to drive AI-powered software development, automate
+                  testing, and design AI-first architectures.
+                </p>
+
+                {/* Skills */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {[
+                    "Prompt Engineering",
+                    "Generative AI",
+                    "Software Architecture",
+                    "Test Automation",
+                    "Software Design",
+                    "Git",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className={`text-xs px-2 py-1 rounded-md ${
+                        darkMode
+                          ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                          : "bg-emerald-50 text-emerald-700"
+                      }`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+
+                <div
+                  className={`flex items-center justify-between pt-3 mt-auto border-t ${
+                    darkMode ? "border-zinc-800" : "border-slate-100"
+                  }`}
+                >
+                  <span
+                    className={`text-xs ${
+                      darkMode ? "text-zinc-600" : "text-slate-400"
+                    }`}
+                  >
+                    Dec 2025
+                  </span>
+                  <a
+                    href="https://www.coursera.org/account/accomplishments/verify/ZL0NFKR2X6GA"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-xs font-medium flex items-center gap-1 transition-colors ${
+                      darkMode
+                        ? "text-emerald-400 hover:text-emerald-300"
+                        : "text-emerald-600 hover:text-emerald-700"
+                    }`}
+                  >
+                    Verify <ExternalLink size={12} />
+                  </a>
+                </div>
               </div>
-            </RevealOnScroll>
+            </div>
 
             {/* Google Certificate */}
-            <RevealOnScroll delay={400} animation="fadeUp">
-              <div className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
+            <div
+              className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
                 darkMode
                   ? "bg-zinc-950 border-zinc-800 hover:border-emerald-500/50"
                   : "bg-white border-slate-200 hover:border-emerald-500"
-              }`}>
-                {/* Certificate Image */}
-                <div className={`aspect-[4/3] overflow-hidden rounded-t-xl ${darkMode ? "bg-black" : "bg-slate-50"}`}>
-                  <img
-                    src="/AIprompt.jpg"
-                    alt="Google Prompting Essentials Certificate"
-                    className="w-full h-full object-contain p-4"
-                  />
-                </div>
+              }`}
+            >
+              {/* Certificate Image */}
+              <div
+                className={`aspect-[4/3] overflow-hidden rounded-t-xl ${
+                  darkMode ? "bg-black" : "bg-slate-50"
+                }`}
+              >
+                <img
+                  src="/AIprompt.jpg"
+                  alt="Google Prompting Essentials Certificate"
+                  className="w-full h-full object-contain p-4"
+                />
+              </div>
 
-                {/* Content */}
-                <div className="p-4 sm:p-5 flex flex-col flex-grow">
-                  {/* Icon + Title Row */}
-                  <div className="flex items-start gap-3 mb-3">
-                    <div className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
-                      darkMode ? "border-emerald-500/30 bg-emerald-500/10" : "border-emerald-200 bg-emerald-50"
-                    }`}>
-                      <Award size={16} className="text-emerald-500" />
-                    </div>
-                    <div>
-                      <h3 className={`font-bold font-industry leading-tight text-sm sm:text-base ${
+              {/* Content */}
+              <div className="p-4 sm:p-5 flex flex-col flex-grow">
+                {/* Icon + Title Row */}
+                <div className="flex items-start gap-3 mb-3">
+                  <div
+                    className={`w-9 h-9 rounded-lg border flex items-center justify-center shrink-0 ${
+                      darkMode
+                        ? "border-emerald-500/30 bg-emerald-500/10"
+                        : "border-emerald-200 bg-emerald-50"
+                    }`}
+                  >
+                    <Award size={16} className="text-emerald-500" />
+                  </div>
+                  <div>
+                    <h3
+                      className={`font-bold font-industry leading-tight text-sm sm:text-base ${
                         darkMode ? "text-white" : "text-slate-900"
-                      }`}>
-                        Design Prompts for Everyday Work Tasks
-                      </h3>
-                      <p className={`text-xs mt-0.5 ${darkMode ? "text-zinc-500" : "text-slate-500"}`}>
-                        Google
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Description */}
-                  <p className={`text-sm leading-relaxed mb-4 ${
-                    darkMode ? "text-zinc-500" : "text-slate-500"
-                  }`}>
-                    Completed Google's course on Coursera with a verified 100% grade, covering practical prompt engineering techniques for daily knowledge work. Learned to apply a prompting framework for drafting content, brainstorming ideas, structuring tables and timelines, summarizing long text, and tailoring tone and style using tools like Google Gemini and other LLMs.
-                  </p>
-
-                  {/* Skills */}
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {["Prompt Engineering", "Google Gemini", "LLM Application", "Business Writing", "Brainstorming", "ChatGPT"].map((skill) => (
-                      <span key={skill} className={`text-xs px-2 py-1 rounded-md ${
-                        darkMode ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-emerald-50 text-emerald-700"
-                      }`}>
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className={`flex items-center justify-between pt-3 mt-auto border-t ${darkMode ? "border-zinc-800" : "border-slate-100"}`}>
-                    <span className={`text-xs ${darkMode ? "text-zinc-600" : "text-slate-400"}`}>
-                      Dec 2025
-                    </span>
-                    <a
-                      href="https://www.coursera.org/account/accomplishments/verify/FX72XSD8H83O"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`text-xs font-medium flex items-center gap-1 transition-colors ${
-                        darkMode ? "text-emerald-400 hover:text-emerald-300" : "text-emerald-600 hover:text-emerald-700"
                       }`}
                     >
-                      Verify <ExternalLink size={12} />
-                    </a>
+                      Design Prompts for Everyday Work Tasks
+                    </h3>
+                    <p
+                      className={`text-xs mt-0.5 ${
+                        darkMode ? "text-zinc-500" : "text-slate-500"
+                      }`}
+                    >
+                      Google
+                    </p>
                   </div>
                 </div>
-              </div>
-            </RevealOnScroll>
 
+                {/* Description */}
+                <p
+                  className={`text-sm leading-relaxed mb-4 ${
+                    darkMode ? "text-zinc-500" : "text-slate-500"
+                  }`}
+                >
+                  Completed Google's course on Coursera with a verified 100%
+                  grade, covering practical prompt engineering techniques for
+                  daily knowledge work. Learned to apply a prompting framework
+                  for drafting content, brainstorming ideas, structuring tables
+                  and timelines, summarizing long text, and tailoring tone and
+                  style using tools like Google Gemini and other LLMs.
+                </p>
+
+                {/* Skills */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
+                  {[
+                    "Prompt Engineering",
+                    "Google Gemini",
+                    "LLM Application",
+                    "Business Writing",
+                    "Brainstorming",
+                    "ChatGPT",
+                  ].map((skill) => (
+                    <span
+                      key={skill}
+                      className={`text-xs px-2 py-1 rounded-md ${
+                        darkMode
+                          ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                          : "bg-emerald-50 text-emerald-700"
+                      }`}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+
+                <div
+                  className={`flex items-center justify-between pt-3 mt-auto border-t ${
+                    darkMode ? "border-zinc-800" : "border-slate-100"
+                  }`}
+                >
+                  <span
+                    className={`text-xs ${
+                      darkMode ? "text-zinc-600" : "text-slate-400"
+                    }`}
+                  >
+                    Dec 2025
+                  </span>
+                  <a
+                    href="https://www.coursera.org/account/accomplishments/verify/FX72XSD8H83O"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-xs font-medium flex items-center gap-1 transition-colors ${
+                      darkMode
+                        ? "text-emerald-400 hover:text-emerald-300"
+                        : "text-emerald-600 hover:text-emerald-700"
+                    }`}
+                  >
+                    Verify <ExternalLink size={12} />
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1235,14 +1485,12 @@ const Portfolio = () => {
         }`}
       >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <RevealOnScroll>
-            <SectionHeading
-              title="Education"
-              subtitle="Academic Journey"
-              center
-              darkMode={darkMode}
-            />
-          </RevealOnScroll>
+          <SectionHeading
+            title="Education"
+            subtitle="Academic Journey"
+            center
+            darkMode={darkMode}
+          />
 
           <div
             className={`mt-16 space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b ${
@@ -1251,31 +1499,25 @@ const Portfolio = () => {
                 : "before:from-transparent before:via-slate-300 before:to-transparent"
             }`}
           >
-            <RevealOnScroll delay={200}>
-              <TimelineItem
-                year="2023 - Present"
-                title="BS Computer Science"
-                school="Isabela State University"
-                darkMode={darkMode}
-                active
-              />
-            </RevealOnScroll>
-            <RevealOnScroll delay={400}>
-              <TimelineItem
-                year="2021 - 2023"
-                title="Senior High School"
-                school="Odizee School Of Achievers"
-                darkMode={darkMode}
-              />
-            </RevealOnScroll>
-            <RevealOnScroll delay={600}>
-              <TimelineItem
-                year="2017 - 2021"
-                title="Junior High School"
-                school="Angadanan National High School"
-                darkMode={darkMode}
-              />
-            </RevealOnScroll>
+            <TimelineItem
+              year="2023 - Present"
+              title="BS Computer Science"
+              school="Isabela State University"
+              darkMode={darkMode}
+              active
+            />
+            <TimelineItem
+              year="2021 - 2023"
+              title="Senior High School"
+              school="Odizee School Of Achievers"
+              darkMode={darkMode}
+            />
+            <TimelineItem
+              year="2017 - 2021"
+              title="Junior High School"
+              school="Angadanan National High School"
+              darkMode={darkMode}
+            />
           </div>
         </div>
       </section>
@@ -1283,128 +1525,136 @@ const Portfolio = () => {
       {/* Contact Section */}
       <section id="contact" className="py-32 relative overflow-hidden">
         {/* Background Glow */}
-        <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] blur-[120px] rounded-full pointer-events-none ${darkMode ? "bg-zinc-800/30" : "bg-slate-200/50"}`}></div>
+        <div
+          className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] blur-[120px] rounded-full pointer-events-none ${
+            darkMode ? "bg-zinc-800/30" : "bg-slate-200/50"
+          }`}
+        ></div>
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <RevealOnScroll>
-            <div
-              className={`rounded-[2.5rem] p-8 md:p-12 text-center border backdrop-blur-sm shadow-2xl ${
-                darkMode
-                  ? "bg-zinc-900/80 border-zinc-800"
-                  : "bg-white/80 border-slate-100"
+          <div
+            className={`rounded-[2.5rem] p-8 md:p-12 text-center border backdrop-blur-sm shadow-2xl ${
+              darkMode
+                ? "bg-zinc-900/80 border-zinc-800"
+                : "bg-white/80 border-slate-100"
+            }`}
+          >
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-industry tracking-tight">
+              Let's build something amazing.
+            </h2>
+            <p
+              className={`mb-10 text-lg ${
+                darkMode ? "text-zinc-400" : "text-slate-600"
               }`}
             >
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 font-industry tracking-tight">
-                Let's build something amazing.
-              </h2>
-              <p
-                className={`mb-10 text-lg ${
-                  darkMode ? "text-zinc-400" : "text-slate-600"
+              I'm currently available for freelance work and commissions. Have a
+              project in mind? Let's turn that idea into code.
+            </p>
+
+            <div className="flex flex-col md:flex-row gap-6 justify-center mb-12">
+              <div
+                className={`p-4 rounded-2xl flex items-center gap-4 text-left transition-colors border w-full md:w-auto ${
+                  darkMode
+                    ? "bg-black/50 border-zinc-800"
+                    : "bg-slate-50 border-slate-200"
                 }`}
               >
-                I'm currently available for freelance work and commissions. Have
-                a project in mind? Let's turn that idea into code.
-              </p>
-
-              <div className="flex flex-col md:flex-row gap-6 justify-center mb-12">
                 <div
-                  className={`p-4 rounded-2xl flex items-center gap-4 text-left transition-colors border w-full md:w-auto ${
+                  className={`p-3 rounded-xl ${
                     darkMode
-                      ? "bg-black/50 border-zinc-800"
-                      : "bg-slate-50 border-slate-200"
+                      ? "bg-emerald-500/10 text-emerald-500"
+                      : "bg-emerald-50 text-emerald-600"
                   }`}
                 >
-                  <div className={`p-3 rounded-xl ${darkMode ? "bg-emerald-500/10 text-emerald-500" : "bg-emerald-50 text-emerald-600"}`}>
-                    <Mail size={24} />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold opacity-60 uppercase tracking-wider">
-                      Email Me
-                    </p>
-                    <a
-                      href="mailto:johnfranklinbugauisan0@gmail.com"
-                      className="font-medium hover:underline"
-                    >
-                      johnfranklinbugauisan0@gmail.com
-                    </a>
-                  </div>
-                </div>
-              </div>
-
-              <form
-                className="space-y-4 text-left max-w-md mx-auto"
-                onSubmit={handleSubmit}
-              >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className={`w-full px-4 sm:px-5 py-3 sm:py-4 rounded-xl outline-none transition-all border font-medium text-base ${
-                        darkMode
-                          ? "bg-zinc-950 border-zinc-800 focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 text-white"
-                          : "bg-white border-slate-200 focus:border-slate-400"
-                      }`}
-                      placeholder="Name"
-                    />
-                  </div>
-                  <div>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className={`w-full px-4 sm:px-5 py-3 sm:py-4 rounded-xl outline-none transition-all border font-medium text-base ${
-                        darkMode
-                          ? "bg-zinc-950 border-zinc-800 focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 text-white"
-                          : "bg-white border-slate-200 focus:border-slate-400"
-                      }`}
-                      placeholder="Email"
-                    />
-                  </div>
+                  <Mail size={24} />
                 </div>
                 <div>
-                  <textarea
-                    rows="4"
-                    name="message"
-                    value={formData.message}
+                  <p className="text-xs font-bold opacity-60 uppercase tracking-wider">
+                    Email Me
+                  </p>
+                  <a
+                    href="mailto:johnfranklinbugauisan0@gmail.com"
+                    className="font-medium hover:underline"
+                  >
+                    johnfranklinbugauisan0@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <form
+              className="space-y-4 text-left max-w-md mx-auto"
+              onSubmit={handleSubmit}
+            >
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <input
+                    type="text"
+                    name="name"
+                    value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className={`w-full px-4 sm:px-5 py-3 sm:py-4 rounded-xl outline-none transition-all border font-medium resize-none text-base ${
+                    className={`w-full px-4 sm:px-5 py-3 sm:py-4 rounded-xl outline-none transition-all border font-medium text-base ${
                       darkMode
                         ? "bg-zinc-950 border-zinc-800 focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 text-white"
                         : "bg-white border-slate-200 focus:border-slate-400"
                     }`}
-                    placeholder="Tell me about your project..."
-                  ></textarea>
+                    placeholder="Name"
+                  />
                 </div>
-                <button
-                  type="submit"
-                  disabled={formStatus === "sending"}
-                  className={`w-full py-4 rounded-xl font-bold text-lg transition-all shadow-lg font-industry ${
+                <div>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    required
+                    className={`w-full px-4 sm:px-5 py-3 sm:py-4 rounded-xl outline-none transition-all border font-medium text-base ${
+                      darkMode
+                        ? "bg-zinc-950 border-zinc-800 focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 text-white"
+                        : "bg-white border-slate-200 focus:border-slate-400"
+                    }`}
+                    placeholder="Email"
+                  />
+                </div>
+              </div>
+              <div>
+                <textarea
+                  rows="4"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  className={`w-full px-4 sm:px-5 py-3 sm:py-4 rounded-xl outline-none transition-all border font-medium resize-none text-base ${
                     darkMode
-                      ? "bg-white text-black hover:bg-zinc-200 disabled:opacity-50"
-                      : "bg-gradient-to-r from-green-700 to-emerald-500 text-white shadow-emerald-500/30 disabled:opacity-50"
+                      ? "bg-zinc-950 border-zinc-800 focus:border-zinc-600 focus:ring-1 focus:ring-zinc-600 text-white"
+                      : "bg-white border-slate-200 focus:border-slate-400"
                   }`}
-                >
-                  {formStatus === "sending"
-                    ? "Sending..."
-                    : formStatus === "success"
-                    ? "Sent! ✓"
-                    : "Send Message"}
-                </button>
-                {formStatus === "error" && (
-                  <p className="text-red-500 text-sm text-center mt-2">
-                    Something went wrong. Please try again.
-                  </p>
-                )}
-              </form>
-            </div>
-          </RevealOnScroll>
+                  placeholder="Tell me about your project..."
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                disabled={formStatus === "sending"}
+                className={`w-full py-4 rounded-xl font-bold text-lg transition-all shadow-lg font-industry ${
+                  darkMode
+                    ? "bg-white text-black hover:bg-zinc-200 disabled:opacity-50"
+                    : "bg-gradient-to-r from-green-700 to-emerald-500 text-white shadow-emerald-500/30 disabled:opacity-50"
+                }`}
+              >
+                {formStatus === "sending"
+                  ? "Sending..."
+                  : formStatus === "success"
+                  ? "Sent! ✓"
+                  : "Send Message"}
+              </button>
+              {formStatus === "error" && (
+                <p className="text-red-500 text-sm text-center mt-2">
+                  Something went wrong. Please try again.
+                </p>
+              )}
+            </form>
+          </div>
         </div>
       </section>
 
@@ -1433,8 +1683,8 @@ const Portfolio = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`p-3 rounded-full transition-all duration-300 ${
-                darkMode 
-                  ? "bg-zinc-900 text-zinc-400 hover:bg-emerald-500 hover:text-white" 
+                darkMode
+                  ? "bg-zinc-900 text-zinc-400 hover:bg-emerald-500 hover:text-white"
                   : "bg-slate-100 text-slate-600 hover:bg-emerald-500 hover:text-white"
               }`}
             >
@@ -1445,8 +1695,8 @@ const Portfolio = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 ${
-                darkMode 
-                  ? "bg-zinc-900 text-zinc-400 hover:bg-emerald-500 hover:text-white" 
+                darkMode
+                  ? "bg-zinc-900 text-zinc-400 hover:bg-emerald-500 hover:text-white"
                   : "bg-slate-100 text-slate-600 hover:bg-emerald-500 hover:text-white"
               }`}
             >
@@ -1455,8 +1705,8 @@ const Portfolio = () => {
             <a
               href="mailto:johnfranklinbugauisan0@gmail.com"
               className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 ${
-                darkMode 
-                  ? "bg-zinc-900 text-zinc-400 hover:bg-emerald-500 hover:text-white" 
+                darkMode
+                  ? "bg-zinc-900 text-zinc-400 hover:bg-emerald-500 hover:text-white"
                   : "bg-slate-100 text-slate-600 hover:bg-emerald-500 hover:text-white"
               }`}
             >
@@ -1561,9 +1811,7 @@ const SkillCard = ({ title, icon, skills, darkMode }) => (
     <ul className="space-y-4">
       {skills.map((skill, idx) => (
         <li key={idx} className="flex items-center space-x-3">
-          <div
-            className="w-2 h-2 rounded-full bg-emerald-500"
-          ></div>
+          <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
           <span
             className={`text-lg ${
               darkMode
