@@ -128,7 +128,7 @@ const Portfolio = () => {
   return (
     <div
       className={`min-h-screen selection:bg-emerald-500 selection:text-white transition-colors duration-500 ${
-        darkMode ? "bg-[#0f1112] text-zinc-100" : "bg-white text-slate-900"
+        darkMode ? "bg-[#121212] text-zinc-100" : "bg-white text-slate-900"
       }`}
     >
       {/* Ambient Noise Texture for tactile feel */}
@@ -138,7 +138,7 @@ const Portfolio = () => {
         className={`fixed w-full z-50 transition-all duration-500 ${
           scrolled
             ? darkMode
-              ? "bg-[#141417]/80 border-zinc-800 backdrop-blur-xl py-2 border-b"
+              ? "bg-[#121212]/95 border-zinc-800 backdrop-blur-xl py-2 border-b"
               : "bg-white/80 border-slate-200 backdrop-blur-xl py-2 border-b"
             : "bg-transparent py-4 border-transparent"
         }`}
@@ -321,10 +321,7 @@ const Portfolio = () => {
                 darkMode ? "text-zinc-500" : "text-slate-500"
               }`}
             >
-              "I don't just write code—I architect solutions and let AI handle
-              the heavy lifting. My role is the brain behind the system:
-              designing scalable backends, mapping out architectures, and
-              guiding AI tools to execute my vision with precision and speed."
+              I don't just write code—I architect solutions. As an AI-augmented developer, I design scalable systems and let AI handle the heavy lifting, turning complex backends into clean, intuitive interfaces that people actually enjoy.
             </p>
           </div>
 
@@ -381,114 +378,194 @@ const Portfolio = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            title="About Me"
-            subtitle="Behind the code"
-            darkMode={darkMode}
-          />
+      <section
+        id="about"
+        className={`py-20 relative ${darkMode ? "" : "bg-slate-50/50"}`}
+      >
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading title="About Me" darkMode={darkMode} />
 
-          <div className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Enhanced Image Card with 3D Tilt Feel */}
-            <div className="flex justify-center">
-              <div className="relative group max-w-md w-full">
-                <div
-                  className={`relative rounded-[1.8rem] overflow-hidden aspect-[4/5] border-2 transition-transform duration-700 ${
-                    darkMode
-                      ? "bg-zinc-900 border-zinc-800"
-                      : "bg-white border-slate-100"
-                  }`}
-                >
-                  {/* High Quality Rendering Enforcement */}
+          {/* Card Container - Matching Reference Style */}
+          <div
+            className={`mt-10 max-w-3xl mx-auto rounded-2xl p-5 sm:p-6 border ${
+              darkMode
+                ? "bg-zinc-900/50 border-zinc-800"
+                : "bg-white border-slate-200 shadow-lg"
+            }`}
+          >
+            {/* Top Row: Image + Name + Social Icons */}
+            <div className="flex items-start gap-6 mb-6">
+              {/* Profile Image with Badge */}
+              <div className="relative flex-shrink-0">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden border-2 border-zinc-700">
                   <img
                     src={profileImg}
                     alt="John Franklin Bugauisan"
-                    loading="eager"
-                    decoding="async"
                     className="w-full h-full object-cover"
-                    style={{ imageRendering: "auto" }}
                   />
-                  {/* Overlay gradient for better text readability if needed, or just aesthetic */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                </div>
+                {/* Solo Dev Badge */}
+              </div>
+
+              {/* Name */}
+              <div className="flex-1 min-w-0">
+                <h3 className="text-2xl sm:text-3xl font-bold font-industry leading-tight">
+                  John Franklin Bugauisan
+                </h3>
+              </div>
+
+              {/* Social Icons */}
+              <div className="hidden sm:flex items-center gap-2">
+                <a
+                  href="https://github.com/ImFrankB"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2.5 rounded-xl border transition-colors ${
+                    darkMode
+                      ? "border-zinc-700 hover:bg-zinc-800 text-zinc-400 hover:text-white"
+                      : "border-slate-200 hover:bg-slate-100 text-slate-600"
+                  }`}
+                >
+                  <Github size={18} />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/john-franklin-bugauisan-86aa16309/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`p-2.5 rounded-xl border transition-colors ${
+                    darkMode
+                      ? "border-zinc-700 hover:bg-zinc-800 text-zinc-400 hover:text-white"
+                      : "border-slate-200 hover:bg-slate-100 text-slate-600"
+                  }`}
+                >
+                  <Linkedin size={18} />
+                </a>
+                <a
+                  href="mailto:johnfranklinbugauisan0@gmail.com"
+                  className={`p-2.5 rounded-xl border transition-colors ${
+                    darkMode
+                      ? "border-zinc-700 hover:bg-zinc-800 text-zinc-400 hover:text-white"
+                      : "border-slate-200 hover:bg-slate-100 text-slate-600"
+                  }`}
+                >
+                  <Mail size={18} />
+                </a>
+              </div>
+            </div>
+
+            {/* Description */}
+            <div className="space-y-4">
+              <p
+                className={`text-base leading-7 ${
+                  darkMode ? "text-zinc-300" : "text-slate-600"
+                }`}
+              >
+                <span
+                  className={`font-bold ${
+                    darkMode ? "text-white" : "text-slate-900"
+                  }`}
+                >
+                  Computer Science Student at Isabela State University.
+                </span>{" "}
+                I'm an AI-augmented developer who architects solutions rather than just writing code. I design scalable systems and leverage AI tools to handle the heavy lifting, transforming complex backends into clean, intuitive interfaces.
+              </p>
+              <p
+                className={`text-base leading-7 ${
+                  darkMode ? "text-zinc-300" : "text-slate-600"
+                }`}
+              >
+                My approach combines strategic system design with AI-powered development.{" "}
+                <span className="text-emerald-400">
+                  I believe great technology should be both powerful and simple.
+                </span>
+              </p>
+            </div>
+
+            {/* Personal Info Grid */}
+            <div
+              className={`mt-6 pt-6 border-t ${
+                darkMode ? "border-zinc-800" : "border-slate-200"
+              }`}
+            >
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                <div>
+                  <p
+                    className={`text-xs font-semibold uppercase tracking-wider mb-1 ${
+                      darkMode ? "text-zinc-500" : "text-slate-400"
+                    }`}
+                  >
+                    Age
+                  </p>
+                  <p
+                    className={`text-sm font-medium ${
+                      darkMode ? "text-zinc-200" : "text-slate-700"
+                    }`}
+                  >
+                    20
+                  </p>
+                </div>
+                <div>
+                  <p
+                    className={`text-xs font-semibold uppercase tracking-wider mb-1 ${
+                      darkMode ? "text-zinc-500" : "text-slate-400"
+                    }`}
+                  >
+                    Country
+                  </p>
+                  <p
+                    className={`text-sm font-medium ${
+                      darkMode ? "text-zinc-200" : "text-slate-700"
+                    }`}
+                  >
+                    Philippines
+                  </p>
+                </div>
+                <div className="col-span-2">
+                  <p
+                    className={`text-xs font-semibold uppercase tracking-wider mb-1 ${
+                      darkMode ? "text-zinc-500" : "text-slate-400"
+                    }`}
+                  >
+                    Degree
+                  </p>
+                  <p
+                    className={`text-sm font-medium ${
+                      darkMode ? "text-zinc-200" : "text-slate-700"
+                    }`}
+                  >
+                    BS Computer Science (Ongoing)
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Content */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-4xl font-bold font-industry leading-tight mb-6">
-                  John Franklin Bugauisan
-                </h3>
-                <div
-                  className={`inline-flex items-center px-4 py-2 rounded-full text-sm font-medium mb-6 ${
-                    darkMode
-                      ? "bg-purple-500/10 text-purple-400 border border-purple-500/20"
-                      : "bg-purple-50 text-purple-600 border border-purple-200"
+            {/* Role Pills */}
+            <div className="flex flex-wrap gap-2 mt-6 pt-6 border-t border-zinc-800">
+              {[
+                { name: "Web Dev", variant: "default" },
+                { name: "AI/ML", variant: "default" },
+                { name: "System Architecture", variant: "default" },
+                { name: "AI Prompting", variant: "default" },
+                { name: "AI-Augmented", variant: "special" },
+              ].map((role) => (
+                <span
+                  key={role.name}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border ${
+                    role.variant === "special"
+                      ? darkMode
+                        ? "bg-purple-500/10 text-purple-400 border-purple-500/30"
+                        : "bg-purple-50 text-purple-600 border-purple-200"
+                      : darkMode
+                      ? "bg-zinc-800/50 text-zinc-300 border-zinc-700"
+                      : "bg-slate-100 text-slate-700 border-slate-200"
                   }`}
                 >
-                  <Sparkles size={16} className="mr-2" />
-                  AI-Augmented Developer
-                </div>
-              </div>
-
-              <div>
-                <p
-                  className={`text-lg leading-8 font-light ${
-                    darkMode ? "text-zinc-300" : "text-slate-600"
-                  }`}
-                >
-                  <span
-                    className={`font-bold ${
-                      darkMode ? "text-white" : "text-slate-900"
-                    }`}
-                  >
-                    Computer Science Student at Isabela State University.
-                  </span>{" "}
-                  I'm a web developer exploring machine learning and AI. I use
-                  AI tools to enhance my work—turning complex backend systems
-                  into clean, easy-to-use interfaces that people actually enjoy.
-                </p>
-                <p
-                  className={`text-lg leading-8 font-light mt-4 ${
-                    darkMode ? "text-zinc-300" : "text-slate-600"
-                  }`}
-                >
-                  Rather than just building websites, I create smart digital
-                  solutions that solve real problems. I believe great technology
-                  should be both powerful and simple.
-                </p>
-              </div>
-
-              <div>
-                <div className="flex flex-wrap gap-3 pt-4">
-                  {[
-                    { name: "Next.js", variant: "default" },
-                    { name: "React", variant: "default" },
-                    { name: "TypeScript", variant: "default" },
-                    { name: "Python", variant: "default" },
-                    { name: "FastAPI", variant: "default" },
-                    { name: "AI", variant: "default" },
-                    { name: "AI-Augmented", variant: "special" },
-                  ].map((tech) => (
-                    <span
-                      key={tech.name}
-                      className={`px-4 py-2 rounded-full text-sm font-medium ${
-                        tech.variant === "special"
-                          ? darkMode
-                            ? "bg-purple-500/10 text-purple-400 border border-purple-500/20"
-                            : "bg-purple-50 text-purple-600 border border-purple-200"
-                          : darkMode
-                          ? "bg-zinc-800 text-zinc-300 border border-zinc-700"
-                          : "bg-slate-100 text-slate-700 border border-slate-200"
-                      }`}
-                    >
-                      {tech.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
+                  {role.variant === "special" && (
+                    <span className="mr-1">✦</span>
+                  )}
+                  {role.name}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -497,22 +574,20 @@ const Portfolio = () => {
       {/* Skills Section - Bento Grid Style */}
       <section
         id="skills"
-        className={`py-32 relative ${
-          darkMode ? "bg-[#0a0b0c]" : "bg-slate-50/50"
-        }`}
+        className={`py-20 relative ${darkMode ? "" : "bg-slate-50/50"}`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Technical Arsenal"
             subtitle="My stack"
             darkMode={darkMode}
           />
 
-          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-4">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
             <div className="h-full">
               <SkillCard
                 title="Frontend"
-                icon={<Code2 className="text-emerald-500" size={40} />}
+                icon={<Code2 className="text-emerald-500" size={28} />}
                 skills={[
                   "React.js",
                   "Tailwind CSS",
@@ -526,7 +601,7 @@ const Portfolio = () => {
             <div className="h-full">
               <SkillCard
                 title="Backend & Systems"
-                icon={<Terminal className="text-emerald-500" size={40} />}
+                icon={<Terminal className="text-emerald-500" size={28} />}
                 skills={[
                   "Node.js",
                   "Python",
@@ -541,7 +616,7 @@ const Portfolio = () => {
             <div className="h-full">
               <SkillCard
                 title="Tools & Workflow"
-                icon={<Database className="text-emerald-500" size={40} />}
+                icon={<Database className="text-emerald-500" size={28} />}
                 skills={[
                   "Git & GitHub",
                   "VS Code",
@@ -558,27 +633,27 @@ const Portfolio = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-32 relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="projects" className="py-20 relative">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Featured Work"
             subtitle="Recent Projects"
             darkMode={darkMode}
           />
 
-          <div className="mt-12 md:mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 px-4">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
             {/* Project Card: LearnSteps */}
             <div
               className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 ${
                 darkMode
-                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
                   : "bg-white border-slate-200 hover:border-emerald-500"
               }`}
             >
               {/* Enhanced Image Area */}
               <div
                 className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${
-                  darkMode ? "bg-zinc-900" : "bg-slate-100"
+                  darkMode ? "bg-zinc-900/50" : "bg-slate-100"
                 }`}
               >
                 {/* Interactive Hover Overlay */}
@@ -632,20 +707,26 @@ const Portfolio = () => {
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {["React.js", "AI/ML", "Tailwind CSS", "API Integration"].map(
-                    (tag) => (
-                      <span
-                        key={tag}
-                        className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
-                          darkMode
-                            ? "bg-zinc-800 text-zinc-300"
-                            : "bg-slate-100 text-slate-700"
-                        }`}
-                      >
-                        {tag}
-                      </span>
-                    )
-                  )}
+                  {[
+                    "Next.js",
+                    "Tailwind",
+                    "Zustand",
+                    "Supabase",
+                    "FastAPI",
+                    "API Integration",
+                    "Prompt Engineering",
+                  ].map((tag) => (
+                    <span
+                      key={tag}
+                      className={`text-xs font-semibold px-3 py-1.5 rounded-md ${
+                        darkMode
+                          ? "bg-zinc-800 text-zinc-300"
+                          : "bg-slate-100 text-slate-700"
+                      }`}
+                    >
+                      {tag}
+                    </span>
+                  ))}
                 </div>
 
                 <a
@@ -667,14 +748,14 @@ const Portfolio = () => {
             <div
               className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 ${
                 darkMode
-                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
                   : "bg-white border-slate-200 hover:border-emerald-500"
               }`}
             >
               {/* Enhanced Image Area */}
               <div
                 className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${
-                  darkMode ? "bg-zinc-900" : "bg-slate-100"
+                  darkMode ? "bg-zinc-900/50" : "bg-slate-100"
                 }`}
               >
                 {/* Interactive Hover Overlay */}
@@ -689,7 +770,7 @@ const Portfolio = () => {
                 {/* Floating Link Button */}
                 <div className="absolute bottom-4 right-4 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 z-20">
                   <span className="bg-white text-black px-4 py-2 rounded-full font-bold text-sm flex items-center gap-2 shadow-lg">
-                    Visit Application <ArrowUpRight size={16} />
+                    Visit Platform <ArrowUpRight size={16} />
                   </span>
                 </div>
               </div>
@@ -754,7 +835,7 @@ const Portfolio = () => {
                       : "bg-emerald-600 text-white hover:bg-emerald-700"
                   }`}
                 >
-                  Visit Application <ExternalLink size={16} />
+                  Visit Platform <ExternalLink size={16} />
                 </a>
               </div>
             </div>
@@ -763,13 +844,13 @@ const Portfolio = () => {
             <div
               className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
                 darkMode
-                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
                   : "bg-white border-slate-200 hover:border-emerald-500"
               }`}
             >
               <div
                 className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${
-                  darkMode ? "bg-zinc-900" : "bg-slate-100"
+                  darkMode ? "bg-zinc-900/50" : "bg-slate-100"
                 }`}
               >
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
@@ -852,13 +933,13 @@ const Portfolio = () => {
             <div
               className={`group rounded-[2rem] overflow-hidden border transition-all duration-500 h-full flex flex-col ${
                 darkMode
-                  ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
                   : "bg-white border-slate-200 hover:border-emerald-500"
               }`}
             >
               <div
-                className={`relative aspect-video overflow-hidden flex items-center justify-center p-8 ${
-                  darkMode ? "bg-zinc-900" : "bg-slate-100"
+                className={`relative aspect-video overflow-hidden flex items-center justify-center p-6 sm:p-8 ${
+                  darkMode ? "bg-zinc-900/50" : "bg-slate-100"
                 }`}
               >
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 z-10"></div>
@@ -1113,7 +1194,10 @@ const Portfolio = () => {
       </section>
 
       {/* Certifications Section */}
-      <section id="certifications" className="py-32 relative">
+      <section
+        id="certifications"
+        className={`py-20 relative ${darkMode ? "" : "bg-slate-50/50"}`}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Certifications"
@@ -1123,19 +1207,19 @@ const Portfolio = () => {
           />
 
           {/* Minimalist 3-Column Grid */}
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* HUAWEI Certificate */}
             <div
               className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
                 darkMode
-                  ? "bg-zinc-950 border-zinc-800 hover:border-emerald-500/50"
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
                   : "bg-white border-slate-200 hover:border-emerald-500"
               }`}
             >
               {/* Certificate Image */}
               <div
                 className={`aspect-[4/3] overflow-hidden rounded-t-xl ${
-                  darkMode ? "bg-black" : "bg-slate-50"
+                  darkMode ? "bg-zinc-900/50" : "bg-slate-50"
                 }`}
               >
                 <img
@@ -1244,14 +1328,14 @@ const Portfolio = () => {
             <div
               className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
                 darkMode
-                  ? "bg-zinc-950 border-zinc-800 hover:border-emerald-500/50"
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
                   : "bg-white border-slate-200 hover:border-emerald-500"
               }`}
             >
               {/* Certificate Image */}
               <div
                 className={`aspect-[4/3] overflow-hidden rounded-t-xl ${
-                  darkMode ? "bg-black" : "bg-slate-50"
+                  darkMode ? "bg-zinc-900/50" : "bg-slate-50"
                 }`}
               >
                 <img
@@ -1361,14 +1445,14 @@ const Portfolio = () => {
             <div
               className={`group h-full rounded-xl border transition-all duration-300 flex flex-col ${
                 darkMode
-                  ? "bg-zinc-950 border-zinc-800 hover:border-emerald-500/50"
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
                   : "bg-white border-slate-200 hover:border-emerald-500"
               }`}
             >
               {/* Certificate Image */}
               <div
                 className={`aspect-[4/3] overflow-hidden rounded-t-xl ${
-                  darkMode ? "bg-black" : "bg-slate-50"
+                  darkMode ? "bg-zinc-900/50" : "bg-slate-50"
                 }`}
               >
                 <img
@@ -1480,11 +1564,9 @@ const Portfolio = () => {
       {/* Education Section */}
       <section
         id="education"
-        className={`py-32 relative ${
-          darkMode ? "bg-[#0a0b0c]" : "bg-slate-50/80"
-        }`}
+        className={`py-20 relative ${darkMode ? "" : "bg-slate-50/80"}`}
       >
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             title="Education"
             subtitle="Academic Journey"
@@ -1492,38 +1574,161 @@ const Portfolio = () => {
             darkMode={darkMode}
           />
 
-          <div
-            className={`mt-16 space-y-12 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b ${
-              darkMode
-                ? "before:from-transparent before:via-zinc-800 before:to-transparent"
-                : "before:from-transparent before:via-slate-300 before:to-transparent"
-            }`}
-          >
-            <TimelineItem
-              year="2023 - Present"
-              title="BS Computer Science"
-              school="Isabela State University"
-              darkMode={darkMode}
-              active
-            />
-            <TimelineItem
-              year="2021 - 2023"
-              title="Senior High School"
-              school="Odizee School Of Achievers"
-              darkMode={darkMode}
-            />
-            <TimelineItem
-              year="2017 - 2021"
-              title="Junior High School"
-              school="Angadanan National High School"
-              darkMode={darkMode}
-            />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {/* Current Education */}
+            <div
+              className={`group h-full rounded-xl border transition-all duration-300 p-5 ${
+                darkMode
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
+              }`}
+            >
+              <div className="flex items-start gap-3 mb-4">
+                <div
+                  className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 ${
+                    darkMode
+                      ? "border-emerald-500/30 bg-emerald-500/10"
+                      : "border-emerald-200 bg-emerald-50"
+                  }`}
+                >
+                  <GraduationCap size={20} className="text-emerald-500" />
+                </div>
+                <div className="flex-1">
+                  <h3
+                    className={`font-bold font-industry text-base ${
+                      darkMode ? "text-white" : "text-slate-900"
+                    }`}
+                  >
+                    BS Computer Science
+                  </h3>
+                  <p
+                    className={`text-sm mt-0.5 ${
+                      darkMode ? "text-zinc-500" : "text-slate-500"
+                    }`}
+                  >
+                    Isabela State University
+                  </p>
+                </div>
+              </div>
+              <div
+                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${
+                  darkMode
+                    ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                    : "bg-emerald-50 text-emerald-700 border border-emerald-200"
+                }`}
+              >
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                </span>
+                2023 - Present
+              </div>
+            </div>
+
+            {/* Senior High School */}
+            <div
+              className={`group h-full rounded-xl border transition-all duration-300 p-5 ${
+                darkMode
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
+              }`}
+            >
+              <div className="flex items-start gap-3 mb-4">
+                <div
+                  className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 ${
+                    darkMode
+                      ? "border-zinc-700 bg-zinc-800/50"
+                      : "border-slate-200 bg-slate-50"
+                  }`}
+                >
+                  <GraduationCap
+                    size={20}
+                    className={darkMode ? "text-zinc-400" : "text-slate-400"}
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3
+                    className={`font-bold font-industry text-base ${
+                      darkMode ? "text-white" : "text-slate-900"
+                    }`}
+                  >
+                    Senior High School
+                  </h3>
+                  <p
+                    className={`text-sm mt-0.5 ${
+                      darkMode ? "text-zinc-500" : "text-slate-500"
+                    }`}
+                  >
+                    Odizee School Of Achievers
+                  </p>
+                </div>
+              </div>
+              <span
+                className={`text-xs font-medium ${
+                  darkMode ? "text-zinc-600" : "text-slate-400"
+                }`}
+              >
+                2021 - 2023
+              </span>
+            </div>
+
+            {/* Junior High School */}
+            <div
+              className={`group h-full rounded-xl border transition-all duration-300 p-5 ${
+                darkMode
+                  ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
+                  : "bg-white border-slate-200 hover:border-emerald-500"
+              }`}
+            >
+              <div className="flex items-start gap-3 mb-4">
+                <div
+                  className={`w-10 h-10 rounded-lg border flex items-center justify-center shrink-0 ${
+                    darkMode
+                      ? "border-zinc-700 bg-zinc-800/50"
+                      : "border-slate-200 bg-slate-50"
+                  }`}
+                >
+                  <GraduationCap
+                    size={20}
+                    className={darkMode ? "text-zinc-400" : "text-slate-400"}
+                  />
+                </div>
+                <div className="flex-1">
+                  <h3
+                    className={`font-bold font-industry text-base ${
+                      darkMode ? "text-white" : "text-slate-900"
+                    }`}
+                  >
+                    Junior High School
+                  </h3>
+                  <p
+                    className={`text-sm mt-0.5 ${
+                      darkMode ? "text-zinc-500" : "text-slate-500"
+                    }`}
+                  >
+                    Angadanan National High School
+                  </p>
+                </div>
+              </div>
+              <span
+                className={`text-xs font-medium ${
+                  darkMode ? "text-zinc-600" : "text-slate-400"
+                }`}
+              >
+                2017 - 2021
+              </span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 relative overflow-hidden">
+      <section
+        id="contact"
+        className={`py-20 relative overflow-hidden ${
+          darkMode ? "" : "bg-slate-50/50"
+        }`}
+      >
         {/* Background Glow */}
         <div
           className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] blur-[120px] rounded-full pointer-events-none ${
@@ -1533,17 +1738,17 @@ const Portfolio = () => {
 
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div
-            className={`rounded-[2.5rem] p-8 md:p-12 text-center border backdrop-blur-sm shadow-2xl ${
+            className={`rounded-2xl p-6 md:p-8 text-center border backdrop-blur-sm shadow-2xl ${
               darkMode
                 ? "bg-zinc-900/80 border-zinc-800"
                 : "bg-white/80 border-slate-100"
             }`}
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 font-industry tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-industry tracking-tight">
               Let's build something amazing.
             </h2>
             <p
-              className={`mb-10 text-lg ${
+              className={`mb-8 text-base ${
                 darkMode ? "text-zinc-400" : "text-slate-600"
               }`}
             >
@@ -1798,25 +2003,25 @@ const InfoItem = ({ icon, label, value, subValue, darkMode }) => (
 
 const SkillCard = ({ title, icon, skills, darkMode }) => (
   <div
-    className={`h-full p-6 sm:p-8 rounded-[2rem] border transition-all duration-300 group ${
+    className={`h-full p-5 sm:p-6 rounded-2xl border transition-all duration-300 group ${
       darkMode
-        ? "bg-zinc-900 border-zinc-800 hover:border-emerald-500/50"
+        ? "bg-zinc-900/50 border-zinc-800 hover:border-emerald-500/30"
         : "bg-white border-slate-200 hover:border-emerald-500"
     }`}
   >
-    <div className="mb-8 p-4 bg-zinc-100/5 rounded-2xl inline-block md:block md:w-fit">
+    <div className="mb-5 p-3 bg-zinc-800/50 rounded-xl inline-block">
       {icon}
     </div>
-    <h4 className="text-2xl font-bold mb-6 font-industry">{title}</h4>
-    <ul className="space-y-4">
+    <h4 className="text-xl font-bold mb-4 font-industry">{title}</h4>
+    <ul className="space-y-2.5">
       {skills.map((skill, idx) => (
-        <li key={idx} className="flex items-center space-x-3">
-          <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+        <li key={idx} className="flex items-center space-x-2.5">
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
           <span
-            className={`text-lg ${
+            className={`text-sm ${
               darkMode
-                ? "text-zinc-400 group-hover:text-zinc-200"
-                : "text-slate-600 group-hover:text-slate-900"
+                ? "text-zinc-400 group-hover:text-zinc-300"
+                : "text-slate-600 group-hover:text-slate-800"
             } transition-colors`}
           >
             {skill}
